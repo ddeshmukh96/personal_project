@@ -20,25 +20,31 @@ def countofelementsinL2(l1,l2):
 
 l3=[1,3,7,2,0]
 l4=[5,5,3,6,3,4,-1]
-# k=int(input("Enter user no.: "))
+k=int(input("Enter user no.: "))
 def sumofcountoflistelements(l3,l4,k):
     countofelements=0
     for i in l3:
+        print("current i is : ",i)
         for j in l4:
+            print("current j is : ",j)
             if k==i+j:
+                print("Sum of i and j is = ", k)
                 countofelements=countofelements+1
+                print("current count is : ",countofelements)
+    print("Final count is : ",countofelements)
     return countofelements
 
-# print(sumofcountoflistelements(l3,l4,k))
+print(sumofcountoflistelements(l3,l4,k))
 
 S1="paxxap"
 S2="paxyap"
 def check_pallindrome(S):
+    isPal = True
     for i in range(0,len(S)):
         j=len(S)-i-1
         if S[i]!=S[j]:
-            return False
-    return True
+            isPal = False
+    return isPal
 
 # print(check_pallindrome(S1))
 # print(check_pallindrome(S2))
@@ -65,5 +71,5 @@ def sort_elements_in_list(Lst):
                 Lst[j]=temp
     return Lst
 
-print(sort_elements_in_list([3,5,2,1,0,10]))
+# print(sort_elements_in_list([3,5,2,1,0,10]))
 
