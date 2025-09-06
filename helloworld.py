@@ -4,5 +4,13 @@ def checkifNumExist(L,x):
             return True
     return False
 
-x = int(input('Enter num'))
-print(checkifNumExist([2,23,523,56,777],x))
+L=[1,2,1,3,4,5,8,7,8,7]
+k=int(input("Give the number: "))
+def check_count(L):
+    x=0
+    for i in range(0,len(L)):
+        if k==L[i]:
+            x=x+1
+    return x
+
+print(check_count(L))
