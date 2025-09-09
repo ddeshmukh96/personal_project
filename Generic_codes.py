@@ -20,7 +20,7 @@ def countofelementsinL2(l1,l2):
 
 l3=[1,3,7,2,0]
 l4=[5,5,3,6,3,4,-1]
-k=int(input("Enter user no.: "))
+# k=int(input("Enter user no.: "))
 def sumofcountoflistelements(l3,l4,k):
     countofelements=0
     for i in l3:
@@ -34,7 +34,7 @@ def sumofcountoflistelements(l3,l4,k):
     print("Final count is : ",countofelements)
     return countofelements
 
-print(sumofcountoflistelements(l3,l4,k))
+# print(sumofcountoflistelements(l3,l4,k))
 
 S1="paxxap"
 S2="paxyap"
