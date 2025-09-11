@@ -10,7 +10,7 @@ def dup_elements(Lst):
                 print(Lst[i]==Lst[j])
                 found_dup=True
     return found_dup
-print(dup_elements(G))
+# print(dup_elements(G))
 
 # 2nd Method
 G=[1,5,3,5]
@@ -22,9 +22,10 @@ def dup_elements(Lst):
                 return True
     return False
     
-print(dup_elements(G))
+# print(dup_elements(G))
 
 # Write a code to find the Largest of product of elements in a list
+# Method 1
 My_Lst=[1, 10, 2, 6, 5, 3]
 def find_max(Lst):
     current_max=0
@@ -43,7 +44,23 @@ def largest_product(Lst):
             current_product=Lst[i]*Lst[j]
             # print(current_product)
             Prd_of_elements.append(current_product)
-    # print(Prd_of_elements)
+    print(Prd_of_elements)
     return find_max(Prd_of_elements)
+
+print(largest_product(My_Lst))
+
+# Method 2
+def largest_product(Lst):
+    Productis=0
+    for i in range(len(Lst)):
+        current_product=0
+        for j in range(i+1,len(Lst)):
+            # print(Lst[i],Lst[j])
+            # print(current_product)
+            current_product=Lst[i]*Lst[j]
+            # print(current_product)
+            if Productis < current_product:
+                Productis=current_product
+    return Productis
 
 print(largest_product(My_Lst))
