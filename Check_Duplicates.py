@@ -47,7 +47,7 @@ def largest_product(Lst):
     print(Prd_of_elements)
     return find_max(Prd_of_elements)
 
-print(largest_product(My_Lst))
+# print(largest_product(My_Lst))
 
 # Method 2
 def largest_product(Lst):
@@ -63,4 +63,82 @@ def largest_product(Lst):
                 Productis=current_product
     return Productis
 
-print(largest_product(My_Lst))
+# print(largest_product(My_Lst))
+
+
+# Sliding window Algorithm
+A=[3,5,2,1]
+B=[7,2,3,3,3,5,2,1,6]
+"""
+lst1=B
+lst2=A
+"""
+def sub_array(B,A):
+    for i in range(0,len(B)):
+        temp_index=i
+        is_equal=True
+        print("Temporary index is: ",temp_index,"value of i is",i)
+        for j in range(0,len(A)):
+            print("Current j is :",j)
+            if B[temp_index]!=A[j]:
+                print("Found mistmatched : ", i, j)
+                is_equal=False
+                break
+            temp_index=temp_index+1
+            print("New value of temporary index is: ", temp_index)
+        if is_equal==True:
+            print("I found the sub array:", i)
+            return i
+    return -1
+# x=sub_array(B,A)
+# print(x)
+
+# Print pairs function
+listA=[3,5,7,8,1]
+def print_pairs_sum(listA):
+    for i in range(0,len(listA)):
+        for j in range(i+1,len(listA)):
+            x=listA[i]+listA[j]
+            print(x)
+# print_pairs_sum(listA)
+
+#
+listB=[1,2,3,4,5,6,7,8]
+def difference_even_odd(listB):
+    Even_number=0
+    Odd_number=0
+    for i in range(0,len(listB)):
+        if i%2==0:
+            Even_number=Even_number+listB[i]
+        else:
+            Odd_number=Odd_number+listB[i]
+    return Even_number-Odd_number
+# print(difference_even_odd(listB))
+
+
+"""
+listC=[3,7,1,2,1,1,1,3,5,5,7,2,2,9]
+
+           0 1 2 3 4 5 6 7 8 9 10.......................100
+frequency=[0,4,3,2,0,2,0,2,0,1,0,0,0,0,0................,0]
+           
+           0 1 2 3 4 5 6 7 8 9
+frequence=[0,4,3,1,0,2,0,2,0,1]
+
+"""
+
+listC=[3,7,1,2,1,1,1,3,5,5,7,2,2,9]
+def compute_fequency(listC):
+    initial_list=[]
+    for i in range(0,20):
+        initial_list.append(0)
+    # print(initial_list)
+
+    for j in range(0,len(listC)):
+        initial_count=0
+        if listC[j]==j:
+            initial_count=initial_count+1
+            initial_list.append(initial_count)
+    return initial_list
+
+print(compute_fequency(listC))
