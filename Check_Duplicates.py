@@ -132,13 +132,11 @@ def compute_fequency(listC):
     initial_list=[]
     for i in range(0,20):
         initial_list.append(0)
-    # print(initial_list)
-
-    for j in range(0,len(listC)):
         initial_count=0
-        if listC[j]==j:
-            initial_count=initial_count+1
-            initial_list.append(initial_count)
+        for j in range(0,len(listC)):
+            if listC[j]==i:
+                initial_count=initial_count+1
+        initial_list[i]=initial_count
     return initial_list
 
 print(compute_fequency(listC))
