@@ -95,6 +95,10 @@ def sub_array(B,A):
 
 # Print pairs function
 listA=[3,5,7,8,1]
+"""
+n-1 + n-2 + n-3 + ......1
+
+"""
 def print_pairs_sum(listA):
     for i in range(0,len(listA)):
         for j in range(i+1,len(listA)):
@@ -123,14 +127,21 @@ listC=[3,7,1,2,1,1,1,3,5,5,7,2,2,9]
 frequency=[0,4,3,2,0,2,0,2,0,1,0,0,0,0,0................,0]
            
            0 1 2 3 4 5 6 7 8 9
-frequence=[0,4,3,1,0,2,0,2,0,1]
+frequence=[0,4,3,2,0,2,0,2,0,1]
 
 """
 
-listC=[3,7,1,2,1,1,1,3,5,5,7,2,2,9]
-def compute_fequency(listC):
+# Compute frequency of elements and put them in a list having 10 elements
+"""This Algorithm runs in order n x n i.e. n2 (n square)"""
+import random
+listC=[]
+for _ in range(100_000):  # 1 lakh = 100,000
+    num = random.randint(1, 1000000)  # You can adjust the range as needed
+    listC.append(num)
+
+def compute_fequency_A1(listC):
     initial_list=[]
-    for i in range(0,20):
+    for i in range(0,100_000):
         initial_list.append(0)
         initial_count=0
         for j in range(0,len(listC)):
@@ -139,4 +150,17 @@ def compute_fequency(listC):
         initial_list[i]=initial_count
     return initial_list
 
-print(compute_fequency(listC))
+# print(compute_fequency_A1(listC))
+
+"""This Algorithm runs in order n only"""
+def compute_fequencyA2(listC):
+    frequency_array=[]
+    for i in range(0,1000005):
+        frequency_array.append(0)
+    for i in listC:
+        frequency_array[i]=frequency_array[i]+1
+
+    return frequency_array
+
+# print(compute_fequencyA2(listC))
+
