@@ -36,9 +36,11 @@ def adding_list(L1,L2):
 A=[ [1,2,3],
     [4,5,6],
     [7,8,9]]
-for i in range(0,3):
-    for j in range(0,3):
-        print(i,j)
+# print(A)
+# for i in range(0,3):
+#     for j in range(0,3):
+#         print(A[i][j],end=" ")
+#     print("\n")
 B=[ [9,8,7],
     [6,5,4],
     [3,2,1]]
@@ -63,9 +65,59 @@ def sum_of_matrix(A,B):
         for j in range(0,3):
             C[i][j] = A[i][j] + B[i][j]
     return C
+x=sum_of_matrix(A,B)
 # for i in range(0,3):
 #     for j in range(0,3):
-#         # print(C)
+#     #     print(C[i][j],end=" ")
+#     # print("\n")
 
-# x=sum_of_matrix(A,B)
 # print(x)
+
+
+#Given a list print the list in reverse
+#       0 1 2 3 4
+List_R=[3,5,7,8,9]
+def reverse_list(List_R):
+    List_new=[]
+    for i in range((len(List_R)-1),-1,-1):
+        List_new.append(List_R[i])
+    return List_new
+# print(reverse_list(List_R))
+
+#pallindrome sum
+
+"""
+0 4  i+j = n-1
+3+9
+
+1 3
+5+8
+
+2 2   
+7 7
+
+"""
+G=[3,5,7,8,9]
+n=len(G)
+def pallindrome_sum(G):
+    New_List1=[]
+    if n%2==0:
+        for i in range(0,(n//2)):
+            j=n-1-i
+            New_sum=G[i]+G[j]
+            New_List1.append(New_sum)
+            Final_sum=sum(New_List1)
+        return Final_sum
+    else:
+        for i in range(0,(n//2)+1):
+            j=n-1-i
+            if i!=j:
+                New_sum=G[i]+G[j]
+                New_List1.append(New_sum)
+            else:
+                New_sum=G[i]
+                New_List1.append(New_sum)
+            Final_sum=sum(New_List1)
+        return Final_sum
+
+print(pallindrome_sum(G))

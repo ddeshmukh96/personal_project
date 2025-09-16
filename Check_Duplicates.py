@@ -162,5 +162,5 @@ def compute_fequencyA2(listC):
 
     return frequency_array
 
-# print(compute_fequencyA2(listC))
+print(compute_fequencyA2(listC))
 
