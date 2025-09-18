@@ -12,3 +12,4 @@ git commit -m "count number of repeating elements"
 git push
 git log
 git diff
+git checkout -b name

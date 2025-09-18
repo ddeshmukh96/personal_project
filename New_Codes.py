@@ -100,24 +100,34 @@ def reverse_list(List_R):
 G=[3,5,7,8,9]
 n=len(G)
 def pallindrome_sum(G):
-    New_List1=[]
+    resulting_List1=[]
     if n%2==0:
         for i in range(0,(n//2)):
             j=n-1-i
             New_sum=G[i]+G[j]
-            New_List1.append(New_sum)
-            Final_sum=sum(New_List1)
+            resulting_List1.append(New_sum)
+        Final_sum=sum(resulting_List1)
+        # print(Final_sum)
         return Final_sum
     else:
         for i in range(0,(n//2)+1):
             j=n-1-i
             if i!=j:
                 New_sum=G[i]+G[j]
-                New_List1.append(New_sum)
+                resulting_List1.append(New_sum)
             else:
                 New_sum=G[i]
-                New_List1.append(New_sum)
-            Final_sum=sum(New_List1)
+                resulting_List1.append(New_sum)
+        Final_sum=sum(resulting_List1)
         return Final_sum
 
 print(pallindrome_sum(G))
+
+
+# r=[1,2,5,8,5,7,6,3,1,4]
+# def addition(r):
+#     opr_count=0
+#     sum_r=0
+#     for i in range(0,len(r)):
+#         sum_r=sum_r+r[i]
+#     return sum_r
