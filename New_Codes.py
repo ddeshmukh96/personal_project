@@ -121,13 +121,61 @@ def pallindrome_sum(G):
         Final_sum=sum(resulting_List1)
         return Final_sum
 
-print(pallindrome_sum(G))
+# print(pallindrome_sum(G))
 
 
-# r=[1,2,5,8,5,7,6,3,1,4]
-# def addition(r):
-#     opr_count=0
-#     sum_r=0
-#     for i in range(0,len(r)):
-#         sum_r=sum_r+r[i]
-#     return sum_r
+matrix_1=[[1,0,0,1],
+          [0,1,0,1],
+          [1,0,1,0],
+          [0,1,1,0]]
+#Calculate the count of 1
+def count_of_element(matrix_1):
+    count_of_1=0
+    for i in range(0,len(matrix_1)):
+        for j in range(0,len(matrix_1)):
+            if matrix_1[i][j]==1:
+                count_of_1=count_of_1+1
+    return count_of_1
+
+# print(count_of_element(matrix_1))
+
+"""
+Given a dungeon 1 is a wall and 0 is a ground
+Find the number of safe groung cells
+
+A cell is considered safe if it is surrounded by walls on all four side
+
+Suppose a cell is on i j so its up down Lh side and RH side should be walls
+
+
+"""
+
+dungeon_matrix=[[1,0,0,1,0],
+                [0,1,0,1,1],
+                [1,0,1,0,1],
+                [0,1,0,1,0],
+                [1,0,1,0,1]]
+"""
+          0 1 2 3 4
+dungeon=[[1,0,0,1,0], 0
+         [0,1,0,1,1], 1
+         [1,0,1,0,1], 2
+         [0,1,0,1,0], 3
+         [1,0,1,0,1]] 4
+
+         d[2][1]
+       t d[1][1]  -1 i=2
+       b d[3][1]  +1 i=2
+       l d[2][0]  -1 i=2
+       r d[2][2]  +1
+"""
+def dungeon(dungeon_matrix):
+    safe_cell_count=0
+    for i in range(1,len(dungeon_matrix)-1):
+        for j in range(1,len(dungeon_matrix)-1):
+            if dungeon_matrix[i][j]==0:
+                if dungeon_matrix[i-1][j]==1 and dungeon_matrix[i+1][j] and dungeon_matrix[i][j-1] and dungeon_matrix[i][j+1]:
+                    safe_cell_count=safe_cell_count+1
+    return safe_cell_count
+
+# print(dungeon(dungeon_matrix))
