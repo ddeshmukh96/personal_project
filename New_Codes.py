@@ -179,3 +179,66 @@ def dungeon(dungeon_matrix):
     return safe_cell_count
 
 # print(dungeon(dungeon_matrix))
+
+
+#Peak findings ()
+list3=[1,7,3,2,5,8,7,1]
+def finding_peaks(list3):
+    peak_count=0
+    for i in range(1,len(list3)-1):
+        if list3[i]>list3[i+1] and list3[i]>list3[i-1]:
+            peak_count=peak_count+1
+    return peak_count
+
+# print(finding_peaks(list3))
+
+"""
+       0 1 2 3 4 5 6 7
+stock=[3,7,1,2,5,8,7,1]
+   i            j
+buy day     sell day       profit
+ 0              1             4         j=i+1
+ 0              2            -2         j=0+2
+ 0              3            -1
+ 0              4             2
+ 0              5             5
+ 0              6             4
+ 0              7            -2
+ 1              2            -6       
+ 1              3            -5
+ 1              4            -2
+ 1              5             1
+ 1              6             0
+ 1              7            -6
+ 2              3             1
+ 2              4             4
+ 2              5             7
+ 2              6             6
+ 2              7             0
+ 3              4             3
+ 3              5             6
+ 3              6             5
+ 3              7            -1
+ 4              5             3
+ 4              6             2
+ 4              7            -4
+ 5              6            -1
+ 5              7            -7
+ 6              7            -6
+
+
+"""
+
+#      0 1 2 3 4 5 6 7
+stock=[3,7,1,2,5,8,7,1]
+s2=[7,6,5,4,3,2,1]
+def max_profit(stock):
+    all_profits=[]
+    for i in range(0,len(stock)-1):
+        for j in range(0,len(stock)):
+            if stock[i]<stock[j]:
+                profit=stock[j]-stock[i]
+                all_profits.append(profit)
+    return max(all_profits)
+print(max_profit(stock))
+
