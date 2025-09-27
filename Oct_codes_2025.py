@@ -31,4 +31,4 @@ def matrix_multiplication(a,b):
             c[i][j]=sum_of_elements
     return c
 
-print(matrix_multiplication(a,b))
+# print(matrix_multiplication(a,b))
