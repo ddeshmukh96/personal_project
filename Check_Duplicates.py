@@ -90,8 +90,8 @@ def sub_array(B,A):
             print("I found the sub array:", i)
             return i
     return -1
-# x=sub_array(B,A)
-# print(x)
+x=sub_array(B,A)
+print(x)
 
 # Print pairs function
 listA=[3,5,7,8,1]
@@ -162,5 +162,5 @@ def compute_fequencyA2(listC):
 
     return frequency_array
 
-print(compute_fequencyA2(listC))
+# print(compute_fequencyA2(listC))
 

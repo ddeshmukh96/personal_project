@@ -1,4 +1,4 @@
-# Write a program to 
+# Write a program to print quares of elements in a list
 
 L=[1,2,1,3,4,5,8,7,8,7]
 def compute_squares(L):
