@@ -1,0 +1,149 @@
+Data Structures
+Definition : Containers which holds data and can be insert, delete, update efficiently.
+
+CPU
+Memory Heirarchy
+1. Register : inside the CPU so take the least tinme to be accesible (1 nano second - 10^-9)
+2. RAM : next accessible to register since outside CPU (100 nano second - 10^-7)
+3. Disc : next accessible to RAM so take time for functioning (1 micro second - 1 mili second)
+4. Network : oustside the system (not fixed or tends to infinity)
+
+Why data should be efficiently stored, deleted, updated?
+take a example of Dictionary of pages 10^5
+
+Case 1 : Dictinary is sorted (Binary Search Algorithm)
+if suppose i want to find the word "paper" (follow the steps):
+1. Suppose I came across the word "mango"
+(since I eliminate the first half of pages approxmiately 50K pages)
+
+(Now left with the second half 50K pages)
+2. Now I came across the word from last lets say "zebra"
+so now I can create section lets say 'Viniyard' to 'zebra' (i know word "paper" can be find in this)
+then I can eliminate this section (aprrox 1/2 of 50k i.e. 25K)
+
+3. Now I am left with 25K and again I create a section from "mango" to "viniyard"
+so now I can eliminate this section too since "paper" will not be in this section
+Now left with approx 12.5K
+
+4. Now I arrived on a page having word "peacock" by creating section from "mango"
+to "peacock" so I can create a section "orange" to "peacock" so eliminated the section "mango"
+to "orange"
+
+5. So now i have range "orange" to "peacock" so its easy to find since approx
+10 15 pages are remained to be searched.
+
+Case 2 : Dictionary is jumbled / randomised (Linear Search Algorithm)
+one hase to verify each and every word on each and every page to get "paper" word
+which will take max approx 10^5 searching
+
+
+Absolutely! Here's a polished and presentation-ready explanation of **why binary search runs in ( O(\log n) ) time**, formatted clearly and professionally:
+
+---
+
+# Why is Binary Search ( O(\log n) )?
+
+---
+
+## What is Binary Search?
+
+* Binary search is an efficient algorithm to find a target value in a **sorted array**.
+* It works by repeatedly **dividing the search space in half**:
+
+  * Compare the target with the **middle element**.
+  * If equal, return the index.
+  * If the target is smaller, continue the search in the **left half**.
+  * If the target is larger, continue in the **right half**.
+* This process repeats until the target is found or the search space is empty.
+
+---
+
+## Analyzing the Time Complexity
+
+Let:
+
+* ( n ) = number of elements in the array.
+* Each step **halves** the size of the search space.
+
+---
+
+### Step 1: Initial Search Space Size
+
+* Start with ( n ) elements.
+
+---
+
+### Step 2: After 1 Comparison
+
+* Search space is halved:
+
+  [
+  \frac{n}{2}
+  ]
+
+---
+
+### Step 3: After 2 Comparisons
+
+* Search space is halved again:
+
+  [
+  \frac{n}{2^2} = \frac{n}{4}
+  ]
+
+---
+
+### Step ( k ): After ( k ) Comparisons
+
+* Search space size:
+
+  [
+  \frac{n}{2^k}
+  ]
+
+---
+
+### When does the search end?
+
+* The search ends when the search space is reduced to 1 element:
+
+  [
+  \frac{n}{2^k} = 1
+  ]
+
+* Multiply both sides by ( 2^k ):
+
+  [
+  n = 2^k
+  ]
+
+* Taking logarithm base 2 on both sides:
+
+  [
+  \log_2 n = k
+  ]
+
+---
+
+## Conclusion
+
+* The **maximum number of comparisons** ( k ) required to find the target (or conclude it’s not present) is:
+
+  [
+  k = \log_2 n
+  ]
+
+* Hence, **binary search runs in ( O(\log n) ) time**.
+
+---
+
+## Intuition
+
+* Each comparison **cuts the problem size in half**.
+* Like folding a paper repeatedly — the number of folds until the paper becomes too small is proportional to the logarithm of its original size.
+
+---
+
+Feel free to use this in your slides! If you want, I can also help format this in PowerPoint or add visuals to make it even more engaging.
+
+

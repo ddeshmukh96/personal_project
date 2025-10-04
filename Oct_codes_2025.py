@@ -32,3 +32,18 @@ def matrix_multiplication(a,b):
     return c
 
 # print(matrix_multiplication(a,b))
+
+candles=[4,4,1,3]
+
+def birthdayCakeCandles(candles):
+    present_max=0
+    for i in range(0,len(candles)):
+        if present_max<candles[i]:
+            present_max=candles[i]   
+    candles_count=0
+    for i in range(0,len(candles)):
+        if present_max==candles[i]:
+            candles_count=candles_count+1
+    return candles_count
+
+print(birthdayCakeCandles(candles))
