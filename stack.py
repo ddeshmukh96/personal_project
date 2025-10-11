@@ -18,7 +18,7 @@ with every stack we need a top
 """
 stack=[]
 top=-1
-num_opps=10
+# num_opps=10
 def push(x):
     global top
     top=top+1
