@@ -175,4 +175,104 @@ mid=(low+high)//2 = 6
 if not v
 return -1
 
+--------------------------------------------------------------------------------------------
 
+"Hash Table"
+d=[7,8,9,4,6,58,2,4]
+   0 1 2 3 4  5 6 7
+
+index=hash(value)
+the power of "hash table" is that it will provide the answer/output
+in order of 1 time ie. O(1)
+but it will sacrifice the order of data 
+
+pro : provides quick query O(1)
+cons: sacrifice order of the data. Can reaarange the order itself
+or according to hash policy.
+
+"Tree" : Heirarchy data Structure / Graph Data Structure
+
+                     8              10
+                   /   \             |
+                  5 ---  1           9           This is Graph
+                 / \    / \         /  \          Data Structure
+                2-- 7  4   3 ----  6    11   (includes close loops / cycles)
+
+                  Adjacent Matrix representation of Graph (Graph - Abstract Data Structure)
+
+                 1 2 3 4 5 6 7 8 9 10 11
+              1  0 0 1 1 1 0 0 1 0  0  0
+              2  0 0 0 0 1 0 1 0 0  0  0
+              3  1 0 0 0 0 1 0 0 0  0  0
+              4  1 0 0 0 0 0 0 0 0  0  0
+              5  1 1 0 0 0 0 1 1 0  0  0
+              6  0 0 1 0 0 0 0 0 1  0  0
+              7  0 1 0 0 1 0 0 0 0  0  0
+              8  1 0 0 0 1 0 0 0 0  0  0
+              9  0 0 0 0 0 1 0 0 0  1  1
+              10 0 0 0 0 0 0 0 0 1  0  0
+              11 0 0 0 0 0 0 0 0 1  0  0
+
+
+              Adjacent List representation of Graph
+              l=
+              [
+            0 
+            1  [3,4,5,8]
+            2  [5,7]
+            3  [1,6]
+            4  [1]
+            5  [1,2,7,8]
+            6  [3,9]
+            7  [2,5]
+            8  [1,5]
+            9  [6,10,11]
+            10 [9]
+            11 [9]
+              ]
+
+      "TREE : graph which doesn't have closed cycles is Tree"
+
+                        5
+                     /    \
+                    10     7                 This is tree data Structure
+                   /  \   / \
+                  2    6  1  20              (no closed cycle)
+
+----------------------------------------------------------------------------------------
+
+"Recurrsion" : 
+
+f(n)=f(n-1)+1
+     f(n-1)=f(n-2)+1
+            f(n-2)=f(n-3)+1
+
+f(0)=1     
+f(3)=f(2)+1   3 + 1 = 4
+f(2)=f(1)+1   2 + 1 = 3
+f(1)=f(0)+1   1 + 1 = 2 
+
+In recurrsion you will be given a "Recurrsivce equation" and a "base condition"
+f(n)=f(n-1)+1    (Recurrsive equation)
+f(0)=x           "x is any value which will be know"
+
+
+general equation Form (for example)
+f(n)=k1(f(n-a1)) + k1(f(n-a2)) + k2(f(n-a3)) + ................ + km(f(n-am))
+
+Line equation
+y=mx+c
+f(x)=mx+c
+
+
+f(0)=0
+f(1)=1
+f(n)=f(n-1) + f(n-2)
+
+to calculate f(6)
+
+f(6)=f(6-1)+f(6-2) = f(5)+f(4) = 8
+f(5)=f(4)+f(3)  = 5
+f(4)=f(3)+f(2)  = 3
+f(3)=f(2)+f(1)  = 1 + 1 = 2
+f(2)=f(1)+f(0)  = 1 + 0 = 1
