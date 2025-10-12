@@ -1,7 +1,7 @@
 
 calls=0
 
-def fibonacci(n):
+def fibonacci(n,cache_list):
     global calls
     calls+=1
     # Write your code here.
@@ -9,12 +9,20 @@ def fibonacci(n):
         return 0
     if n==1:
         return 1
-    fn=fibonacci(n-1)+fibonacci(n-2)
+    if cache_list[n]!=-1:
+        return cache_list[n]
+    fn=fibonacci(n-1,cache_list)+fibonacci(n-2,cache_list)
+    cache_list[n]=fn
     return fn
         
-
 n = int(input())
-print(fibonacci(n))
+
+cache_list=[]
+for i in range(0,n+1):
+    cache_list.append(-1)
+
+
+print(fibonacci(n,cache_list))
 print(calls)
 """
                                   f(5)
