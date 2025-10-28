@@ -7,7 +7,7 @@
 
 
 """
-
+"""Adjacency Matrix"""
 g1=[
    [0,1,0,1,0,1,0],
    [1,0,1,0,0,0,0],
@@ -21,11 +21,12 @@ g1=[
 # for i in range(0,11):
 #     u=int(input("Enter the Node 1 : "))
 #     v=int(input("Enter the Node 2 : "))
-#     if g[u][v]==1:
+#     if g1[u][v]==1:
 #         print("Edge is Present")
 #     else:
 #         print("No Edge is present")
 
+"""Adjacency List"""
 g2=[
     [1,3,5],
     [0,2],
@@ -87,3 +88,69 @@ as "Edge Found" but the desired output was like as soon as I get
 the node condition true it shoud prunt "Edge found" and finish.
 
 """
+
+
+"""
+n=8
+m=9
+0 1
+0 3
+0 2
+3 4
+1 5
+1 2
+2 5
+4 5
+6 7                     
+
+                        5 - 4    6 - 7
+                      / |   /
+                    2 - 1  3
+                     \  |  /
+                        0
+                                  
+
+                   
+"""
+
+n=int(input("Give me number of nodes : "))
+m=int(input("Give me number of edges : "))
+
+g3=[]
+
+# g3=[[1,2,3],[],[],[],[],[],[],[]]
+
+for i in range(0,n):
+    g3.append([])
+
+for j in range(0,m):
+    n1=int(input())
+    n2=int(input())
+    g3[n1].append(n2)
+    g3[n2].append(n1)
+
+print(g3)
+
+# To find the indirect edge take two inputs
+n3=int(input())
+n4=int(input())
+visited_list=[]
+for k in range(0,n):
+    visited_list.append(0)
+print(visited_list)
+def walk_graph(current_node,target_node,visited_list):
+    visited_list[current_node]=1
+    print(visited_list)
+    if current_node==target_node:
+        return True
+    for child in g3[current_node]:
+        print(child)
+        if visited_list[child]==0:
+            print(visited_list[child])
+            found_status=walk_graph(child,target_node,visited_list)
+            if found_status==True:
+                return True
+    return False
+        
+print(walk_graph(n3,n4,visited_list))
+

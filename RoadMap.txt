@@ -1,0 +1,28 @@
+Basic Python Programming
+Algorithms
+a) List
+b) Strings
+
+Simple linear Algorithms
+
+Matrix Algorithm
+a) Matrix addition
+b) Matrix product
+
+Sliding Window Algorithm
+
+Stack based Bracket well formation problems
+Binary search
+Basic Graph Representation
+Recursion
+Optimization over recursion (using caching mechanism) called Dynamic Prog..
+
+HackerRank problems solution
+
+----------------------------------------------------------------------------
+Data Structure
+a) List
+b) stack
+c) queue
+d) hash table
+e) graph and tree
