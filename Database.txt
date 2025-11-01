@@ -1,0 +1,75 @@
+To check status: sudo service mysql status
+
+To start the server: sudo service mysql start
+
+To stop the server: sudo service mysql stop
+
+All above commands are used in Linux Terminal not the MySQL terminal
+
+| Step | Command                            | Purpose              |
+| ---- | ---------------------------------- | -------------------- |
+| 1    | `sudo apt update`                  | Update package lists |
+| 2    | `sudo apt install mysql-server -y` | Install MySQL        |
+| 3    | `sudo service status mysql`      | Check MySQL service  |
+| 4    | `sudo mysql_secure_installation`   | Secure installation  |
+| 5    | `sudo mysql` or `mysql -u root -p` | Log in to MySQL      |
+| 6    | `mysql --version`                  | Verify version       |
+
+
+PROBLEM STATEMENT : To create 
+
+USE SchoolDB;
+
+CREATE TABLE CLASS (
+    ClassID INT PRIMARY KEY AUTO_INCREMENT,
+    ClassName VARCHAR(50) NOT NULL,
+    Teacher VARCHAR(50)
+);
+
+CREATE TABLE STUDENT (
+    StudentID INT PRIMARY KEY AUTO_INCREMENT,
+    Name VARCHAR(50) NOT NULL,
+    Age INT,
+    ClassID INT,
+    AdmissionDate DATE,
+    FOREIGN KEY (ClassID) REFERENCES CLASS(ClassID)
+);
+
+INSERT INTO STUDENT (Name, Age, ClassID, AdmissionDate)
+VALUES 
+('Alice', 15, 1, '2023-06-12'),
+('Bob', 14, 2, '2023-06-13'),
+('Charlie', 13, 3, '2023-06-14');
+
+
+INSERT INTO CLASS (ClassID, ClassName, Teacher)
+VALUES 
+(1,'10th Grade', 'Mr. John'),
+(2,'9th Grade', 'Ms. Alice'),
+(3,'8th Grade', 'Mrs. Smith');
+
+
+Update Some Data (Optional)
+UPDATE STUDENT SET Marks = 85 WHERE Name = 'Alice';
+UPDATE STUDENT SET Marks = 90 WHERE Name = 'Bob';
+UPDATE STUDENT SET Marks = 78 WHERE Name = 'Charlie';
+
+
+
+To show tables - SHOW TABLES;
+
+View table structure:
+DESCRIBE STUDENT;
+DESCRIBE CLASS;
+
+
+See inserted data:
+SELECT * FROM CLASS;
+to get whole table " * " is used (* Used to print all cloumns)
+to get specific columns type its variable name seperated by " , "
+SELECT * FROM STUDENT;
+
+To add a column in specific existing table
+ALTER TABLE STUDENT
+ADD COLUMN Marks INT;
+
