@@ -73,3 +73,781 @@ To add a column in specific existing table
 ALTER TABLE STUDENT
 ADD COLUMN Marks INT;
 
+
+*********************************************************************
+PRACTICE PROBLEM
+
+CREATE DATABASE college;
+
+USE college;
+
+CREATE TABLE student(rollno INT PRIMARY KEY,name VARCHAR(50),age INT,
+marks INT,grade VARCHAR(1),city VARCHAR(20));
+
+INSERT INTO student
+(rollno, name, age, marks, grade, city)
+VALUES
+(101,"Anil",15,78,"C","Pune"),
+(102,"Bhumika",16,93,"A","Mumbai"),
+(103,"Chetan",14,85,"B","Mumbai"),
+(104,"Dhruv",15,96,"A","Delhi"),
+(105,"Rushikesh",14,12,"F","Delhi"),
+(106,"Farah",15,82,"B","Delhi");
+
+To see the created table (without inserted values)
+DESCRIBE student;
+
+To see the full inserted data table:
+SELECT * FROM student;
+
+Applying condition for seing various output:
+1. SELECT * FROM student WHERE marks>70;
+2. SELECT * FROM student WHERE city="Mumbai";
+
+Applying Logical operaters (AND, OR, NOT, IN, BETWEEN, ALL, LIKE ,ANY)
+
+  SELECT * FROM student WHERE city="Delhi" AND marks>80;
+  SELECT * FROM student WHERE marks BETWEEN 75 AND 95;
+  (Note : 75 and 95 are inclusive)
+  SELECT * FROM student WHERE marks BETWEEN 75 OR 95; (wrong syntax)
+  SELECT * FROM student WHERE marks=75 OR marks=98;
+  SELECT * FROM student WHERE city IN ("Pune","Mumbai");
+  SELECT * FROM student WHERE city NOT IN ("Pune","Mumbai");
+  
+
+Applying Arithematic operaters (+,-,*,/,%)
+  
+  SELECT * FROM student WHERE marks+10>100;
+
+
+#########  Applying Comparison operaters (= , != , < , <= , > , >= )
+
+  SELECT * FROM student WHERE marks!=93;
+  SELECT * FROM student WHERE marks>=93;
+
+Applying Bitwise Operators ( & - Bitwise AND , | - Bitwise OR)
+
+#########  LIMIT Clause
+
+ SELECT * FROM student LIMIT 3; (Provides first 3 inserted data)
+  SELECT * FROM student WHERE marks>80 LIMIT 3; (Provides data for first 3
+  student where marks are above 80)
+
+######### Order By Clause
+
+    SELECT * FROM student ORDER BY city ASC;
+    SELECT * FROM student ORDER BY marks DESC;
+    Additional : SELECT * FROM student ORDER BY marks DESC LIMIT 3;
+    (To get the marks of top 3)
+
+######### Aggregate Functions
+
+   SELECT MAX(marks) FROM student;
+   SELECT MIN(marks) FROM student;
+   SELECT AVG(marks) FROM student;
+   SELECT COUNT(rollno) FROM student;
+
+########## Group By Clause
+
+   SELECT city FROM student GROUP BY city;
+   SELECT city FROM student GROUP BY city ORDER BY city;
+
+   SELECT COUNT(city) FROM student GROUP BY city;
+   (provides you the count of city)
+
+   SELECT city, COUNT(rollno) FROM student GROUP BY city;
+   (Provides a 2 column table with City and Count of rollno in that city)
+
+   NOTE: Please note that we are writing the "column name" after "SELECT"
+         keyword so if we write "1 column name" or more than that after
+         "SELECT" keyworks then we have write all "column names (1 if 1 or
+         more than it)" in the "GROUP BY line" or else there will be an "Error"
+
+    SELECT city, name, COUNT(rollno) FROM student GROUP BY city, name;
+
+
+@@@@@@@ Write a query to find avg marks in each city in ascending order
+
+  SELECT city, AVG(marks) FROM student GROUP BY city ORDER BY city ASC;
+
+
+@@@@@@@ For a given table ,find the total payment according to each
+        paymeny method
+
+CREATE DATABASE bank;
+USE bank;
+
+CREATE TABLE bank_payment (customer_id INT PRIMARY KEY, customer VARCHAR(50),
+payment_mode VARCHAR(15),city VARCHAR (20));
+
+INSERT INTO bank_payment (customer_id,customer,payment_mode,city)
+VALUES
+(101,'Olivia Barrett','Netbanking','Portland'),
+(102,'Ethan Sinclair','Credit Card','Miami'),
+(103,'Maya Hernandez','Credit Card','Seattle'),
+(104,'Liam Donovan','Netbanking','Denver'),
+(105,'Sophia Nguyen','Credit Card','New Orleans'),
+(106,'Caleb Foster','Debit Card','Minnepolis'),
+(107,'Ava Patel','Debit Card','Phoenix'),
+(108,'Lucas Carter','Netbanking','Boston'),
+(109,'Isabella Martinez','Netbanking','Nashville'),
+(110,'Jackson Brooks','Credit Card','Boston');
+
+
+########## HAVING Clause
+
+  SELECT city,COUNT(name) FROM student GROUP BY city HAVING marks>82;
+  
+  ERROR 1054 (42S22): Unknown column 'marks' in 'having clause'
+
+  SELECT city,COUNT(name) FROM student GROUP BY city HAVING MAX(marks)>82;
+
+
+When you use GROUP BY city, MySQL aggregates all rows per city — so there
+is no single marks value anymore for the group.
+
+HAVING works after grouping, so it can only use:
+Aggregated columns (like AVG(marks), MAX(marks), SUM(marks)),
+or Columns in the GROUP BY clause (like city here).
+That’s why marks (a non-grouped, non-aggregated column)
+doesn’t exist at that point — MySQL throws an error.
+
+@@@@@@@@@@@@@@@  General Order
+
+SELECT city, COUNT(name), MAX(marks)
+FROM student
+WHERE marks > 50
+GROUP BY city
+HAVING MAX(marks) > 82
+ORDER BY MAX(marks) DESC;
+
+
+@@@@@@@@@@@@@@  Table related Queries
+
+1. UPDATE - To update the data in rows
+
+SYNTAX : UPDATE table_name SET col_name = anything WHERE condition;
+
+
+2. DELETE - To delete the data in rows
+
+SYNTAX : DELETE FROM table_name WHERE comdition;
+
+
+@@@@@@@@@@@@@@@  UNDERSTANDING FOREIGN KEY & CASCADING
+
+CREATE TABLE dept(
+  id INT PRIMARY KEY,
+  name VARCHER(25)
+);
+
+CREATE TABLE teacher(
+  id INT PRIMARY KEY,
+  name VARCHAR(25),
+  dept_id INT,
+  FOREIGN KEY (dept_id) REFERENCES dept(id)
+  ON UPDATE CASCADE
+  ON DELETE CASCADE
+);
+
+INSERT INTO dept
+(id,name)
+VALUES
+(101,'Science'),
+(102,'English'),
+(103,'Mathematics');
+
+INSERT INTO teacher
+(id,name,dept_id)
+VALUES
+(1001,'Bob',103),
+(1002,'Ashley',101),
+(1003,'Carla',102),
+(1007,'Kevin',101);
+
+IMP NOTES: CASCADE is used to update and delete at same operation time
+if anyone updates something in table the related data in other Table
+will also be updated since we are using Foreign Key
+
+
+@@@@@@@@@@@@@ "ALTER TABLE" 
+
+1. ADD - to add a column in an existing table
+
+SYNTAX : ALTER TABLE table_name
+         ADD COLUMN column_name datatype constraint;
+
+2. DROP - to delete a column from an existing table
+
+SYNTAX : ALTER TABLE table_name
+         DROP COLUMN column_name;
+
+3. RENAME : to rename a existing table
+
+SYNTAX : ALTER TABLE table_name
+         RENAME TO new_table_name;
+
+4. CHANGE : to rename a column name in an existing table
+
+SYNTAX : ALTER TABLE table_name
+         CHANGE COLUMN existing_col_name new_col_name datatype constraint;
+
+5. MODIFY : to change the column's datatype and constraint
+
+SYNTAX : ALTER TABLE table_name
+         MODIFY column_name new_datatype new_constraint;
+
+
+@@@@@@@@@@@@@@ "TRUNCATE"
+
+TRUNCATE : This is used to delete the whole data in a Table
+
+SYNTAX: TRUNCATE TABLE table_name;
+
+DROP : Delete the table itself
+
+
+
+@@@@@@@@@@@@@@@@@   AUTO_INCREMENT – Quick Notes
+
+Default start: 1 → increments by 1 for each new row.
+
+Change start: use AUTO_INCREMENT = X in CREATE TABLE or ALTER TABLE.
+
+Deleted IDs: not reused; next ID = highest existing + 1.
+
+Manual insert: allowed; future IDs continue from the highest value.
+
+Ensures unique primary keys automatically.
+
+SYNtax :
+
+************ Default Behavior **********
+
+CREATE TABLE courses (
+    course_id INT PRIMARY KEY AUTO_INCREMENT,
+    course_name VARCHAR(50)
+);
+
+INSERT INTO courses (course_name) VALUES ('Maths');
+INSERT INTO courses (course_name) VALUES ('English');
+
+When a column is defined as AUTO_INCREMENT, MySQL automatically generates unique numbers for new rows.
+
+By default, the first value starts at 1.
+
+Each subsequent row increases by 1.
+
+************ Changing the Starting Value ***************
+
+a) During Table Creation
+CREATE TABLE courses (
+    course_id INT PRIMARY KEY AUTO_INCREMENT,
+    course_name VARCHAR(50)
+) AUTO_INCREMENT = 100;
+
+
+The first inserted row will have course_id = 100.
+
+Next row → 101, and so on.
+
+b) After Table Creation
+ALTER TABLE courses AUTO_INCREMENT = 200;
+
+
+The next inserted row will have course_id = 200.
+
+AUTO_INCREMENT always continues from the highest value + 1.
+
+@@@@@@@@@@@@@@@@ JOINS concept
+
+CREATE TABLE school_student (student_id INT PRIMARY KEY, name VARCHAR(20));
+
+CREATE TABLE courses (course_id INT PRIMARY KEY, course_name VARCHAR(20));
+
+INSERT INTO school_student (student_id,name) VALUES (101,'Bob'),(102,'Maria'),(103,'Kevin');
+
+INSERT INTO courses (course_id,course_name) VALUES (102,'English'),(101,'Maths'),(107,'Science');
+
+CRETAED TABLES :
+
++------------+-------+
+| student_id | name  |
++------------+-------+
+|        101 | Bob   |
+|        102 | Maria |
+|        103 | Kevin |
++------------+-------+
+
++------------+-------------+
+| course_id  | course_name |
++------------+-------------+
+|        101 | Maths       |
+|        102 | English     |
+|        107 | Science     |
++------------+-------------+
+
+1. INNER JOIN : to get the whole info fo common things in both table
+
+SYNTAX 1 : Select all the columns you need
+
+Way 1:
+
+SELECT * FROM school_student
+INNER JOIN courses
+ON school_student.student_id=courses.course_id;
+
+Way 2: Using "Alias" - to give shorter character value to table name
+
+SELECT *
+FROM school_student as s
+INNER JOIN courses as c
+ON s.student_id=c.course_id;
+
+OUTPUT : 
+
++------------+-------+-----------+-------------+
+| student_id | name  | course_id | course_name |
++------------+-------+-----------+-------------+
+|        101 | Bob   | 101       | Maths       |
+|        102 | Maria | 102       | English     |
++------------+-------+-----------+-------------+
+
+SYNTAX 2 : Select only the columns you need
+
+SELECT s.student_id, s.name, c.course_name
+FROM school_student s
+INNER JOIN courses c
+ON s.student_id = c.course_id;
+
+OUTPUT : 
+
++------------+-------+-------------+
+| student_id | name  | course_name |
++------------+-------+-------------+
+|        101 | Bob   | Maths       |
+|        102 | Maria | English     |
++------------+-------+-------------+
+
+2. Left Join - Return all records from Left Table and matched records
+               from Right table
+
+SYNTAX :
+
+SELECT *
+FROM school_student  (school_student is considered as Left table)
+LEFT JOIN courses    (courses is considered as Right table)
+ON school_student.student_id=courses.course_id;
+
+OUTPUT :
+
++------------+-------+-----------+-------------+
+| student_id | name  | course_id | course_name |
++------------+-------+-----------+-------------+
+|        101 | Bob   | 101       | Maths       |
+|        102 | Maria | 102       | English     |
+|        103 | Kevin | NULL      | NULL        |
++------------+-------+-----------+-------------+
+
+Note: Sequence matters while getting the data. The above query gives us
+      all data of LEFT Table (student) and common data of both table
+
+3. Right Join - Return all records from Right Table and matched records
+                from Left table
+
+SYNTAX : 
+
+SELECT *
+FROM school_student
+RIGHT JOIN courses
+ON school_student.student_id=courses.course_id;
+
++------------+-------+-----------+-------------+
+| student_id | name  | course_id | course_name |
++------------+-------+-----------+-------------+
+|        101 | Bob   | 101       | Maths       |
+|        102 | Maria | 102       | English     |
+|       NULL | NULL  | 107       | Science     |
++------------+-------+-----------+-------------+
+
+4. Full Join - Return all records when there is a match in either L or R table
+               Union of Left and Right Table
+
+SYNTAX :
+
+SELECT *
+FROM school_student as s
+LEFT JOIN courses as c
+ON s.student_id=c.course_id
+
+UNION
+
+SELECT *
+FROM school_student s
+RIGHT JOIN courses c
+ON s.student_id=c.course_id;
+
+OUTPUT :
+
++------------+-------+-----------+-------------+
+| student_id | name  | course_id | course_name |
++------------+-------+-----------+-------------+
+|        101 | Bob   | 101       | Maths       |
+|        102 | Maria | 102       | English     |
+|        103 | Kevin | NULL      | NULL        |
+|       NULL | NULL  | 107       | Science     |
++------------+-------+-----------+-------------+
+
+Note :
+1. If you are using Oracle or Postgres then you can use the keyword
+   a. FULL JOIN
+   b. FULL OUTER JOIN
+   c. FULL INNER JOIN
+
+2. In MySQL we can't use the above keywords
+
+5. Exclusive Left Join : to remove the matched data from Left Join
+
+SYNTAX :
+
+SELECT *
+FROM school_student as s
+LEFT JOIN courses as c
+ON s.student_id=c.course_id
+WHERE c.course_id IS NULL;
+
+OUTPUT : 
+
++------------+-------+-----------+-------------+
+| student_id | name  | course_id | course_name |
++------------+-------+-----------+-------------+
+|        103 | Kevin | NULL      | NULL        |
++------------+-------+-----------+-------------+
+
+6. Exclusive Right Join : to remove the matched data from Right Join
+
+SYNTAX :
+
+SELECT *
+FROM school_student as s
+RIGHT JOIN courses as c
+ON s.student_id=c.course_id
+WHERE s.student_id IS NULL;
+
+OUTPUT : 
+
++------------+------+-----------+-------------+
+| student_id | name | course_id | course_name |
++------------+------+-----------+-------------+
+|       NULL | NULL | 107       | Science     |
++------------+------+-----------+-------------+
+
+7. Exclusive Full Join : Remove the matched Data from Left and Right table
+
+SYNTAX :
+
+SELECT *
+FROM school_student as s
+LEFT JOIN courses as c
+ON s.student_id=c.course_id
+WHERE c.course_id IS NULL
+UNION
+SELECT *
+FROM school_student as s
+RIGHT JOIN courses as C
+ON s.student_id=c.course_id
+WHERE s.student_id IS NULL;
+
+OUTPUT :
+
++------------+-------+-----------+-------------+
+| student_id | name  | course_id | course_name |
++------------+-------+-----------+-------------+
+|        103 | Kevin | NULL      | NULL        |
+|       NULL | NULL  | 107       | Science     |
++------------+-------+-----------+-------------+
+
+8.  Self Join :
+
+CREATE TABLE employee(
+  emp_id INT PRIMARY KEY,
+  name VARCHAR(25),
+  manager_id VARCHAR(25)
+);
+
+INSERT INTO employee(emp_id,name,manager_id)
+VALUES
+(101,'Adam',103),
+(102,'Bob',104),
+(103,'Casey',NULL),
+(104,'Donald',103);
+
++--------+--------+------------+
+| emp_id | name   | manager_id |
++--------+--------+------------+
+|    101 | Adam   |        103 |
+|    102 | Bob    |        104 |
+|    103 | Casey  |       NULL |
+|    104 | Donald |        103 |
++--------+--------+------------+
+
+Query :
+
+SELECT *
+FROM employee as a
+JOIN employee as b
+WHERE a.emp_id=b.manager_id;
+
++--------+--------+------------+--------+--------+------------+
+| emp_id | name   | manager_id | emp_id | name   | manager_id |
++--------+--------+------------+--------+--------+------------+
+|    103 | Casey  |       NULL |    101 | Adam   |        103 |
+|    104 | Donald |        103 |    102 | Bob    |        104 |
+|    103 | Casey  |       NULL |    104 | Donald |        103 |
++--------+--------+------------+--------+--------+------------+
+
+First this will generate table "b" and then table "a"
+
+Query :
+
+SELECT a.name,b.name
+FROM employee as a
+JOIN employee as b
+WHERE a.emp_id=b.manager_id;
+
++--------+--------+
+| name   | name   |
++--------+--------+
+| Casey  | Adam   |
+| Donald | Bob    |
+| Casey  | Donald |
++--------+--------+
+
+Query :
+
+SELECT a.name as manager_name,b.name
+FROM employee as a
+JOIN employee as b
+WHERE a.emp_id=b.manager_id;
+
++--------------+--------+
+| manager_name | name   |
++--------------+--------+
+| Casey        | Adam   |
+| Donald       | Bob    |
+| Casey        | Donald |
++--------------+--------+
+
+
+@@@@@@@@@@@@@@@@@@@@@   UNION concept
+
+It is used to combine the result-set of two or more SELECT statements
+Gives Unique records
+
+Condition while using "Union"
+
+1. every SELECT should have same no. of column
+2. columns must have similar data types
+3. columns in every SELECT should be in same order
+
+SYNTAX:
+
+SELECT col_name FROM table_A
+UNION
+SELECT col_name FROM table_B
+
+Query eg: SELECT name FROM employee UNION SELECT name FROM employee;
+
++--------+
+| name   |
++--------+
+| Adam   |
+| Bob    |       UNION : removes duplicates
+| Casey  |
+| Donald |
++--------+
+
+All name have been displayed
+
+Query eg: SELECT name FROM employee UNION ALL SELECT name FROM employee;
+
++--------+
+| name   |
++--------+
+| Adam   |
+| Bob    |
+| Casey  |     
+| Donald |    UNION ALL : Allows duplicates
+| Adam   |
+| Bob    |
+| Casey  |
+| Donald |
++--------+
+
+
+@@@@@@@@@@@@@@@@  SQL Sub Queries
+
+A Subquery or Inner Query or a Nested Query is query within
+another SQl query
+
+General there are 3 types to write the Subquery
+1. SELECT
+2. FROM
+3. WHERE
+
+###### Most used type is "WHERE"
+
+SYNTAX :
+
+SELECT col_name
+FROM table_name
+WHERE col_name operator
+(sub-query);
+
+Question : Write a query to find the name of the students who scored
+           marks more than the average of marks in the class.
+
+QUERY :
+
+SELECT full_name,marks
+FROM student
+WHERE marks > (SELECT AVG(marks) FROM student);
+
+OUTPUT :
+
++-----------+-------+
+| full_name | marks |
++-----------+-------+
+| Bhumika   |    94 |
+| Dhruv     |    97 |
+| Rushikesh |    93 |
++-----------+-------+
+
+Question : Write a query to find the names of the students having even
+           roll numbers.
+
+Option 1:
+
+SELECT full_name FROM student WHERE rollno%2=0;
+
+Option 2:
+
+SELECT full_name
+FROM student
+WHERE rollno IN
+(SELECT rollno
+FROM student
+WHERE rollno%2=0
+);
+
+OUTPUT : for both query
+
++-----------+
+| full_name |
++-----------+
+| Bhumika   |
+| Dhruv     |
++-----------+
+
+Expalination for option 2 query
+
+Step 1 : Find all the even rollno
+
+SELECT rollno FROM student WHERE rollno%2=0;
++--------+
+| rollno |
++--------+
+|    102 |
+|    104 |
++--------+
+
+Step 2 : Find the names
+
+SELECT full_name FROM student WHERE rollno IN (102,104);
+
++-----------+
+| full_name |
++-----------+
+| Bhumika   |
+| Dhruv     |
++-----------+
+
+Note:   But in future if someone added data or updates someones data
+        then in that case we will always need to write new query.
+        As a reason to avoid this we write sub-query
+
+SELECT rollno
+FROM student
+WHERE rollno IN (
+  SELECT rollno
+  FROM student
+  WHERE rollno%=0
+  );
+
+######### Exmple using FROM
+
+CREATE TABLE c1_student(
+ rollno INT PRIMARY KEY AUTO_INCREMENT,
+ name VARCHAR(50),
+ marks INT,
+ city VARCHAR(25)
+ )AUTO_INCREMENT=101;
+
+INSERT INTO c1_student
+(name,marks,city) 
+VALUES
+('Anil',78,'Pune'),
+('Bhumika',93,'Mumbai'),
+('Chetan',85,'Mumbai'),
+('Dhruv',96,'Delhi'),
+('Emanuel',92,'Delhi'),
+('Ranjana',82,'Delhi');
+
+Question : Find the max marks from the students of Delhi
+
+Step 1 : Find the students of Delhi
+Step 2 : Find their max marks using the sublist in step 1
+
+Step 1 Query:
+SELECT * FROM c1_student WHERE city='Delhi';
+
+Step 2 Query:
+SELECT MAX(marks) FROM c1_student WHERE city='Delhi';
+
+Final Query using sub-query in FROM
+
+SELECT MAX(marks)
+FROM (SELECT marks FROM c1_student WHERE city='Delhi') AS temp;
+
+****** Note ****** - While writing sub-query in FROM always needs Alias
+
+
+@@@@@@@@@@@@@@@ MySQL Views
+
+A view is a virtual table based on the result-set of an SQL statements
+
+Example : Let suppose the teacher will need the rollno,name and marks
+          for result city is not important for them.
+
+          Then we create a virtual table for them as below
+
+*** Creating a virtual table for teacher
+
+CREATE VIEW view1 AS SELECT rollno,name,marks FROM c1_student;
+
+*** To view table we using ou normal command query
+
+SELECT * FROM view1;
+
+Output:
+
++--------+---------+-------+
+| rollno | name    | marks |
++--------+---------+-------+
+|    101 | Anil    |    78 |
+|    102 | Bhumika |    93 |
+|    103 | Chetan  |    85 |
+|    104 | Dhruv   |    96 |
+|    105 | Emanuel |    92 |
+|    106 | Ranjana |    82 |
++--------+---------+-------+
