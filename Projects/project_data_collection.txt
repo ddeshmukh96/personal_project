@@ -1,0 +1,41 @@
+Table 1: users
+
+CREATE TABLE users (
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL
+);
+
+
+Table 2: categories
+CREATE TABLE categories (
+    category_id INT AUTO_INCREMENT PRIMARY KEY,
+    category_name VARCHAR(50) UNIQUE NOT NULL
+);
+
+Table 3: transactions
+CREATE TABLE transactions (
+    transaction_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    category_id INT,
+    amount DECIMAL(10,2),
+    transaction_type ENUM('income', 'expense'),
+    transaction_date DATE,
+    description VARCHAR(255),
+    FOREIGN KEY (user_id) REFERENCES users(user_id),
+    FOREIGN KEY (category_id) REFERENCES categories(category_id)
+);
+
+
+1️⃣ db_connection.py
+
+Purpose: Centralized MySQL connection (used by all services)
+import mysql.connector
+
+def get_connection():
+    return mysql.connector.connect(
+        host="localhost",
+        user="root",
+        password="YOUR_PASSWORD",
+        database="expense_tracker"
+    )

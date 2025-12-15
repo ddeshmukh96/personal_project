@@ -2,3 +2,5 @@ touch my_file.ext
 echo $HOME : provides location for home directory
 cd <path of folder>
 pwd (present working directory)
+
+mkdir - to create a new folder
