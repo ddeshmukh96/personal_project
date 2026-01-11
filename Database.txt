@@ -387,7 +387,7 @@ CRETAED TABLES :
 |        107 | Science     |
 +------------+-------------+
 
-1. INNER JOIN : to get the whole info fo common things in both table
+1. INNER JOIN : to get the whole info for common things in both table
 
 SYNTAX 1 : Select all the columns you need
 

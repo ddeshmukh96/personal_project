@@ -1,0 +1,364 @@
+1. Student Class – Conceptual Understanding
+1.1 What is Student?
+
+Student is a class.
+A class:
+
+Has no memory
+
+Is only a blueprint
+
+Defines what data and behavior every student object will have
+
+1.2 Member Variables (Attributes)
+
+These belong to each student object:
+
+ID
+
+name
+
+roll_no
+
+Class
+
+Div_no
+
+total_marks
+
+subject_wise_marks (list)
+
+These are called member variables because:
+
+They exist inside the object
+
+Each object gets its own copy
+
+2. Objects of Student Class
+s1 = Student(4X1, Rohan, 12, 5, B, 568, [86,89,78,94,72,65,58])
+s2 = Student(7Y1, Mrunal, 17, 8, A, 630, [73,69,67,59,72,65,77])
+s3 = Student(9Q1, Akshay, 9, 7, C, 673, [79,58,74,72,77,65,77])
+
+
+Each object:
+
+Has real memory, Stores actual values ans is independent of other objects
+
+3. Collection of Objects
+p = [s1, s2, s3]
+
+This is a list of Student objects.
+
+Very important concept:
+
+We usually process objects in bulk using lists.
+
+4. Logic 1 – Count Students with Total Marks ≥ 600
+Pseudocode Explanation
+count = 0
+for s in p:
+    if s.total_marks >= 600:
+        count += 1
+
+Meaning:
+
+Loop through each student object
+
+Access its member variable using s.total_marks
+
+Count how many satisfy the condition
+
+5. Logic 2 – Validate Total Marks
+if s.total_marks != SUM(s.subject_wise_marks):
+    print(s.name)
+
+What this checks:
+
+Whether total_marks stored in the object matches the sum of subject-wise marks
+
+This is a data validation check.
+
+SUM() Function
+def SUM(marks_list):
+    total = 0
+    for i in marks_list:
+        total += i
+    return total
+
+
+This is a normal function, not a class method.
+
+6. Logic 3 – Filter by Name and Class
+count = 0
+for s in p:
+    if s.name == "Rohan" and s.Class == 5:
+        count += 1
+
+Meaning:
+
+Searches for a specific student
+
+Demonstrates multi-condition filtering on objects
+
+7. Logic 4 – Average of Last 3 Subjects
+def student_avg(subject_wise_marks):
+    avg = (marks[4] + marks[5] + marks[6]) // 3
+    return avg
+
+for s in p:
+    if student_avg(s.subject_wise_marks) >= 70:
+        print(s.name)
+
+Meaning:
+
+Uses list indexing
+
+Calculates subject-specific performance
+
+Filters students based on computed logic
+
+8. Transition to Employee Class (Real OOP Usage)
+8.1 Employee Class Definition
+Member Variables:
+
+Emp_ID
+
+Manager_ID
+
+Office_location
+
+Cubical_ID
+
+Grade_Level
+
+Is_Manager
+
+Member Functions:
+
+direct_reporting
+
+annual_rating
+
+responsibility_level
+
+compute_payroll
+
+9. Important OOP Rule (You Mentioned Correctly)
+
+Member functions must be called using an object
+
+Correct:
+
+Emp4.direct_reporting(emp_list)
+
+
+Wrong:
+
+direct_reporting(emp_list)   ❌
+
+10. Employee Objects
+
+Each employee object stores:
+
+Its own ID
+
+Its manager’s ID
+
+Its role and location
+
+Emp4 (209,107,"Banglore",3,"Lead_Manager",True)
+
+11. Logic 5 – Count Employees in Pune
+count = 0
+for i in emp_list:
+    if i.Office_location == "Pune":
+        count += 1
+
+Object-oriented access:
+
+i.Office_location
+
+12. Logic 6 – Count Non-Managers
+if i.Is_Manager != True:
+
+
+This filters employees based on boolean attribute.
+
+13. Member Function: direct_reporting
+def direct_reporting(self, emp_list):
+    count = 0
+    M_ID = self.Emp_ID
+    for i in emp_list:
+        if i.Manager_ID == M_ID:
+            count += 1
+    return count
+
+What this does:
+
+self refers to the manager object
+
+Compares other employees’ Manager_ID
+
+Counts direct subordinates
+
+print(Emp4.direct_reporting(emp_list))
+
+Output:
+3
+
+
+Meaning:
+
+Emp4 has 3 employees directly reporting to them
+
+14. High-Level Summary
+What You Have Learned
+
+Class is Blueprint which has No memory
+
+Object : Instance of a class, Has real memory
+
+Member Variables : Store object data
+
+Member Functions : Operate on object data
+
+Called using object reference
+
+Lists of Objects
+
+Used for real-world data processing
+
+Business Logic
+
+Written using object attributes and methods
+
+******************************************************************
+
+Class and Object Attributes — Easy Explanation
+1. What is a Class?
+
+A class is a blueprint.
+It defines what data and what behavior an object will have.
+A class itself does not store individual student data.
+
+Example:
+
+class Student:
+    college_name = "PCCOE, Pune"
+
+2. Class Attribute (Common for All Objects)
+What is it?
+
+A class attribute:
+
+Is written inside the class
+
+Is not written using self
+
+Is shared by all objects
+
+college_name = "PCCOE, Pune"
+
+Meaning:
+
+All students belong to the same college, so this value is common.
+
+Access:
+
+Student.college_name
+s1.college_name
+s2.college_name
+
+
+All give the same value.
+
+3. Object / Instance Attributes (Unique for Each Object)
+What are they?
+
+Object attributes:
+
+Are written using self
+
+Store object-specific data
+
+Have separate memory for each object
+
+self.name_of_student = name
+self.roll_no_of_student = roll_no
+self.marks_scored = marks
+
+Meaning:
+
+Each student has:
+
+Different name
+
+Different roll number
+
+Different marks
+
+4. Objects Created from the Class
+s1 = Student("Dhananjay", 9, 93.6)
+s2 = Student("Pawan", 11, 96)
+s3 = Student("Sarvesh", 29, 90)
+
+Object	Name	Roll No	Marks
+s1	Dhananjay	9	93.6
+s2	Pawan	11	96
+s3	Sarvesh	29	90
+
+Each object has its own data, but they all share the same college.
+
+5. Important Rule About Constructors
+
+In Python:
+
+Only one __init__ constructor exists
+
+The last one written overrides earlier ones
+
+So this constructor is used:
+
+def __init__(self, name, roll_no, marks):
+
+
+The default constructor is ignored.
+
+6. How Data is Accessed
+Object attributes:
+s1.marks_scored
+s2.name_of_student
+s3.roll_no_of_student
+
+Class attribute:
+Student.college_name
+s2.college_name
+
+7. One-Line Difference (Very Important)
+Type	Written Using	Memory	Example
+Class attribute	Class name	Shared	college_name
+Object attribute	self	Separate per object	name, roll_no, marks
+8. Final Easy Summary
+
+Class attribute → common data for all objects
+
+Object attribute → personal data for each object
+
+Objects share the class attribute
+
+Objects have their own instance attributes
+
+This is how Python models real-world relationships correctly.
+
+
+Default Constructor:
+
+A constructor with only self and no parameters is
+commonly called a default constructor.
+
+It:
+
+Takes no external arguments
+
+Performs default initialization
+

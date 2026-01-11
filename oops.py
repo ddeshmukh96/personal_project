@@ -70,4 +70,118 @@ book1=Book(
     cost=550
 )
 
-book1.book_details()
+# book1.book_details()
+
+class Student:
+    # prameterizes constructors
+    def __init__(self,name,roll_no,marks):
+        self.name_of_student=name
+        self.roll_no_of_student=roll_no
+        self.marks_scored=marks
+
+s1=Student(
+    name="Dhananjay",
+    roll_no=9,
+    marks=93.6
+)
+
+s2=Student(
+    name="Pawan",
+    roll_no=11,
+    marks=96
+)
+
+s3=Student("Sarvesh",29,90)
+
+# print(s1.marks_scored,s1.name_of_student)
+# print(s2.name_of_student)
+# print(s3.roll_no_of_student)
+
+class Democlass:
+    # Default constructor
+    def __init__(self):
+        print("Cholas were undefeated")
+
+# object1=Democlass()
+
+class Students:
+    college_name="PCCOE Pune"
+    name="Anonyomus"
+
+    def __init__(self,name,roll_no,marks):
+        self.name=name
+        self.roll_no=roll_no
+        self.marks=marks
+
+s1=Students("Karan",12,92)
+# print(s1.name)
+
+# output : Karan (if class attribute and object attribute has
+#                 same variable name remember Objects attribute's
+#                 precedence is always higher than the Class attribute)
+
+class C_student:
+
+    def __init__(self,name,city):
+        self.name=name
+        self.city=city
+    
+    def welcome(self):
+        print("Hello",self.name)
+
+    def get_city(self):
+        return self.city
+
+c_s1=C_student("Atharva","Pune")
+
+# print(c_s1.name)
+# c_s1.welcome()
+# print(c_s1.get_city())
+
+"""
+Create student class that takes name and marks
+of 3 subjects as arguments in constructor.Then
+create a method to print the average
+
+"""
+
+""" Method 1 -  provide marks separately """
+
+class School_student1:
+
+    def __init__(self,name,m1,m2,m3):
+        self.name=name
+        self.m1=m1
+        self.m2=m2
+        self.m3=m3
+    
+    def sub_average(self):
+        avg=(self.m1+self.m2+self.m3)/3
+        return avg
+
+s1_s1=School_student1("Vikrant",89,85,92)
+s1_s2=School_student1("Sakshi",93,87,96)
+s1_s3=School_student1("Shivani",85,94,98)
+
+# print(round(s1_s1.sub_average(),2),round(s1_s2.sub_average(),2),round(s1_s3.sub_average(),2))
+
+"""" Method 2 - assuming marks as a list """
+
+class School_student2:
+
+    def __init__(self,name,marks):
+        self.name=name
+        self.marks=marks
+    
+    def get_avg(self):
+        initial_sum=0
+        for i in self.marks:
+            initial_sum=i+initial_sum
+        avg=initial_sum/3
+        return round(avg,2)
+
+s2_s1=School_student2("Vikrant",[89,85,92])
+s2_s2=School_student2("Sakshi",[93,87,96])
+s2_s3=School_student2("Shivani",[85,94,98])
+
+# print(s2_s1.get_avg(),s2_s2.get_avg(),s2_s3.get_avg())
