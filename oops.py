@@ -173,6 +173,11 @@ class School_student2:
         self.name=name
         self.marks=marks
     
+    # Static Method
+    @staticmethod  # this is called decorator
+    def warm_msg():
+        print("Hello World")
+
     def get_avg(self):
         initial_sum=0
         for i in self.marks:
@@ -185,3 +190,68 @@ s2_s2=School_student2("Sakshi",[93,87,96])
 s2_s3=School_student2("Shivani",[85,94,98])
 
 # print(s2_s1.get_avg(),s2_s2.get_avg(),s2_s3.get_avg())
+
+# If I want to update / change name of Vikrant to "Shubham"
+
+s2_s1.name="Shubham"
+
+# print(s2_s1.name)
+
+# calling functions by Static method 
+
+# s2_s1.warm_msg()
+# School_student2.warm_msg()
+
+
+# Learning Abstraction (not real example)
+
+"""
+Hiding implemention details of a class and showing the essential features
+of class to an user
+"""
+class Car:
+    def __init__(self):
+        self.acc = False
+        self.brk = False
+        self.clutch = False
+
+    def start(self):
+        self.clutch = True
+        self.acc = True
+        print("Car Started")
+
+# c1=Car()
+# c1.start()  
+""" at this line we get the "car started" so understand this as
+    user never came across the implemention i.e. statement/code
+    one has written so only the output has been seen by user
+            """
+# Create account class with 2 attributes: balance and account no.
+# Create methods for debit, credit and printing balance
+
+class Account:
+
+    def __init__(self,bal,acc):
+        self.balance=bal
+        self.account_no=acc
+
+    # debit function
+    def debit(self,d_amount):
+        self.balance=self.balance-d_amount
+        print("Rs.",d_amount,"was debited from your account")
+        print("Total Balance = ",self.get_balance())
+
+    def credit(self,c_amount):
+        self.balance+=c_amount
+        print("Rs.",c_amount,"is credited in your account")
+        print("Total Balance = ",self.get_balance())
+
+    def get_balance(self):
+        return self.balance
+
+acc1=Account(10000,5308759156)
+acc1.debit(1250)
+acc1.credit(450)
+acc1.credit(55000)
+acc1.debit(7500)
+
