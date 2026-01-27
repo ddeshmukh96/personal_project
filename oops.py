@@ -190,7 +190,7 @@ class School_student2:
         self.name=name
         self.marks=marks
     
-    # Static Method
+    # Static Method : when we don't want any reltn with the instance attr
     @staticmethod  # this is called decorator and works at Class Level
     def warm_msg():
         print("Hey your avg is:")
@@ -446,6 +446,136 @@ class Car_Model(N_car):
         self.name=name
         super().__init__(type)
 
-car_1=Car_Model("Hyryder","Mild Electric")
+# car_1=Car_Model("Hyryder","Mild Electric")
 
-print(car_1.name,car_1.type)
+# print(car_1.name,car_1.type)
+
+
+"""  Learnign Class Method   """
+
+class N_person:
+    name="anonymus"
+
+    # def changename(self,name):
+    #     self.__class__.name=name
+    #     # N_person.name=name or self.__class__.name=name
+
+    @classmethod
+    def changename(cls,name):
+        cls.name=name
+
+person1=N_person()
+person1.changename("Kushal")
+# print(person1.name)
+# print(N_person.name)
+
+""" 
+class N_person:
+    name="anonymus"
+
+    def changename(self,name):
+        self.name=name
+
+person1=N_person()
+person1.changename("Kushal")
+print(person1.name)       O/P : Kushal
+print(N_person.name)      o/p : anonymus
+
+
+from above eg. we can clearly see that as constructor is not used 
+the obj/instance can't be accessed through Class since it takes 0
+positional argument
+
+As a result we have to first make an obj then use that obj to call method
+name and provide the positional argument and then print whatever
+output we want
+
+If same thing called by class name we get different output since for the
+object we created a new variable called self.name hence no relation
+between it and the anonymus
+
+But if someone wants to change name="anonymus" through the obj i.e.
+person1 here then we use class methods
+
+In-short we want to change the Class attribute values
+
+Way 1 : Instead of writing self.name we write N_person.name
+
+Code:
+class N_person:
+    name="anonymus"
+
+    def changename(self,name):
+        N_person.name=name
+
+person1=N_person()
+person1.changename("Kushal")
+print(person1.name)             o/p : Kushal
+print(N_person.name)            o/p : Kushal
+
+Way 2 : Showing N_person.name as self.__class__.attribute
+
+class N_person:
+    name="anonymus"
+
+    def changename(self,name):
+        self.__class__.name=name
+
+person1=N_person()
+person1.changename("Kushal")
+print(person1.name)
+print(N_person.name)
+
+Note: If we assigned a name at  self.__class__.name = "Rahul", all things
+      gets overide and we get output as Rahul for oth print 
+"""
+
+"""  Learning @Property Decorator"""
+
+class Science:
+    def __init__(self,phy,chem,math):
+        self.phy=phy
+        self.chem=chem
+        self.math=math
+        # self.percentage=str((self.phy+self.chem+self.math)/3) + "%"
+
+    # # way1 for getting updated percentage (general approach)
+    # def cal_percentage(self):
+    #     self.percentage=str((self.phy+self.chem+self.math)/3) + "%"
+
+    @property  # to inherit all variables from one fnctn to this functn
+    def percentage(self):
+        return (str((self.phy+self.chem+self.math)/3) + "%")
+
+
+stu1=Science(98,97,95)
+print(stu1.percentage)
+stu1.phy=86
+# stu1.cal_percentage()
+print(stu1.percentage)
+
+"""
+Imagine a scenario where tye teacher remind that phy marks should be
+86 instead of 98 then I would update the phy marks for stu1
+
+So I write code as :
+class Science:
+    def __init__(self,phy,chem,math):
+        self.phy=phy
+        self.chem=chem
+        self.math=math
+        self.percentage=str((self.phy+self.chem+self.math)/3) + "%"
+
+stu1=Science(98,97,95)
+print(stu1.percentage)
+stu1.phy=86                o/p: 96.67%
+print(stu1.phy)            o/p: 86
+print(stu1.percentage)     o/p: 96.67
+
+but when I updated % for phy it should have given me the outout as 92.67%
+since it is using the attributes from line 551 not the updated % for phy
+
+For getting this to becorrect we use the property decorator
+"""
+
+
