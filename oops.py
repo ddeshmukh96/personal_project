@@ -548,11 +548,11 @@ class Science:
         return (str((self.phy+self.chem+self.math)/3) + "%")
 
 
-stu1=Science(98,97,95)
-print(stu1.percentage)
-stu1.phy=86
-# stu1.cal_percentage()
-print(stu1.percentage)
+# stu1=Science(98,97,95)
+# print(stu1.percentage)
+# stu1.phy=86
+# # stu1.cal_percentage()
+# print(stu1.percentage)
 
 """
 Imagine a scenario where tye teacher remind that phy marks should be
@@ -578,4 +578,166 @@ since it is using the attributes from line 551 not the updated % for phy
 For getting this to becorrect we use the property decorator
 """
 
+"""   Learning Polymorphism     """
 
+class Complex:
+    def __init__(self,real,img):
+        self.real=real
+        self.img=img
+
+    def showNumber(self):
+        # print(self.real,"i +",self.img,"j")
+        sign = "+" if self.img >= 0 else "-"
+        print(f"{self.real}i {sign} {abs(self.img)}j")
+    
+    def __add__(self,com2):
+        new_real=self.real+com2.real
+        new_img=self.img+com2.img
+        return Complex(new_real,new_img)
+    
+    def __sub__(self,com2):
+        new_real=self.real-com2.real
+        new_img=self.img-com2.img
+        return Complex(new_real,new_img)
+
+com1=Complex(2,5)
+# com1.showNumber()
+
+com2=Complex(7,9)
+# com2.showNumber()
+
+com3=com1+com2
+# com3.showNumber()
+
+com4=com1-com2
+# com4.showNumber()
+
+""" 
+To create complex number
+
+class Complex:
+    def __init__(self,real,img):
+        self.real=real
+        self.img=img
+
+    def showNumber(self):
+        print(self.real,"i +",self.img,"j")
+
+com1=Complex(2,5)
+com1.showNumber()    o/p: 2i + 5j
+
+com2=Complex(7,3)
+com2.showNumber()    o/p: 7i + 3j
+
+@ Now if someone wants to add com1 & com2
+
+class Complex:
+    def __init__(self,real,img):
+        self.real=real
+        self.img=img
+
+    def showNumber(self):
+        print(self.real,"i +",self.img,"j")
+    
+    def add(self,com2):
+        new_real=self.real+com2.real
+        new_img=self.img+com2.img
+        return Complex(new_real,new_img)
+
+com1=Complex(2,5)
+com1.showNumber()    o/p: 2i + 5j
+
+com2=Complex(7,3)
+com2.showNumber()    o/p: 7i + 3j
+
+com3=com1.addNum(com2)
+com3.showNumber()    o/p: 9i + 8j
+
+@ But someone who don't want to create com3 by calling the addNum functn
+so now we use " Dunder functions " or basically Polymorphism comes here
+
+Code:
+
+class Complex:
+    def __init__(self,real,img):
+        self.real=real
+        self.img=img
+
+    def showNumber(self):
+        print(self.real,"i +",self.img,"j")
+    
+    def __add__(self,com2):
+        new_real=self.real+com2.real
+        new_img=self.img+com2.img
+        return Complex(new_real,new_img)
+
+
+com1=Complex(2,5)
+com1.showNumber()    o/p: 2i + 5j
+
+com2=Complex(7,3)
+com2.showNumber()    o/p: 7i + 3j
+
+com3=com1 + com2
+com3.showNumber()    o/p: 9i + 8j
+
+"""
+
+
+""" 
+Practice Questions
+
+Define a Circle Class to create a circle with radius using the constructor
+Define a Area() method of the class which which calculates area of circle
+Define a Perimeter() method of the class which allows to calculate
+perimeter of circle
+
+"""
+
+class Circle:
+
+    def __init__(self,radius):
+        self.radius=radius
+
+    def Area(self):
+        return (22/7)*(self.radius**2)
+    
+    def Perimeter(self):
+        return 2*(22/7)*self.radius
+
+
+crl1=Circle(21)
+# print(crl1.Area())
+# print(crl1.Perimeter())
+
+"""
+Define a Employee class with attributes role, department and salary. This
+class has showDetails() method
+Create a Enineer class that inherits property from Employee and has
+additional attributes : name & age
+
+"""
+
+class Employee:
+
+    def __init__(self,role,dept,salary):
+        self.role=role
+        self.dept=dept
+        self.salary=salary
+    
+    def showDetails(self):
+        print("Role = ",self.role)
+        print("Department = ",self.dept)
+        print("Salary = ",self.salary)
+
+class Engineer(Employee):
+    def __init__(self,name,age):
+        self.name=name
+        self.age=age
+        super().__init__("Senior PDE","Engineering Service", 750000)
+
+
+engg1=Engineer("Sean", 27)
+
+engg1.showDetails()
+print(engg1.name)
