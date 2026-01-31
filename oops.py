@@ -739,5 +739,20 @@ class Engineer(Employee):
 
 engg1=Engineer("Sean", 27)
 
-engg1.showDetails()
-print(engg1.name)
+# engg1.showDetails()
+# print(engg1.name)
+
+""" 
+
+Create a class called Order which stores items
+and its cost
+Use Dunder function __gt__() to convey that:
+   order1 > order2 if price of order1 > price of order2
+
+"""
+
+class Order:
+    def __init__(self,item,price):
+        self.item=item
+        self.price=price
+        

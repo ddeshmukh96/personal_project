@@ -10,7 +10,7 @@ All above commands are used in Linux Terminal not the MySQL terminal
 | ---- | ---------------------------------- | -------------------- |
 | 1    | `sudo apt update`                  | Update package lists |
 | 2    | `sudo apt install mysql-server -y` | Install MySQL        |
-| 3    | `sudo service status mysql`      | Check MySQL service  |
+| 3    | `sudo service status mysql`        | Check MySQL service  |
 | 4    | `sudo mysql_secure_installation`   | Secure installation  |
 | 5    | `sudo mysql` or `mysql -u root -p` | Log in to MySQL      |
 | 6    | `mysql --version`                  | Verify version       |
