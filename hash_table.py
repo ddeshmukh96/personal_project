@@ -4,12 +4,12 @@ def hash_fun(x,size):
     return x % size
 
 # for v in arr:
-    print(hash_fun(v,arr))
+    print(hash_fun(v,len(arr)))
 
 hash_table=[]
 
 def build_hash_table(hash_table,arr):
-    for p in range(0,len(arr)):
+    for _ in range(0,len(arr)):
         hash_table.append([])
 
     for v in arr:
@@ -33,10 +33,10 @@ def insert_num(hash_table,var):
     var_lst_index=hash_fun(var,len(hash_table))
     hash_table[var_lst_index].append(var)
 
-# for i in range(0,5):
-#     var=int(input("Enter var to search: "))
-#     search(hash_table,var)
-#     # insert_num(hash_table,var)
+for i in range(0,5):
+    var=int(input("Enter var to search: "))
+    search(hash_table,var)
+    # insert_num(hash_table,var)
 
 def delete(hash_table,var):
     var_lst_index=hash_fun(var,len(hash_table))
@@ -44,7 +44,7 @@ def delete(hash_table,var):
         if num==var:
             hash_table[var_lst_index].remove(var)
 
-val_del=int(input("Enter num: "))
-delete(hash_table,val_del)
+# val_del=int(input("Enter num: "))
+# delete(hash_table,val_del)
 
 print(hash_table)
