@@ -37,7 +37,6 @@ def find_max(Lst):
 def largest_product(Lst):
     Prd_of_elements=[]
     for i in range(len(Lst)):
-        current_product=0
         for j in range(i+1,len(Lst)):
             # print(Lst[i],Lst[j])
             # print(current_product)
@@ -53,7 +52,6 @@ def largest_product(Lst):
 def largest_product(Lst):
     Productis=0
     for i in range(len(Lst)):
-        current_product=0
         for j in range(i+1,len(Lst)):
             # print(Lst[i],Lst[j])
             # print(current_product)
@@ -67,12 +65,18 @@ def largest_product(Lst):
 
 
 # Sliding window Algorithm
+"""
+Write a code to find whether A is subarray of
+B and o/p is the first index
 A=[3,5,2,1]
 B=[7,2,3,3,3,5,2,1,6]
-"""
+
 lst1=B
 lst2=A
 """
+A=[3,5,2,1]
+B=[7,2,3,3,3,5,2,1,6]
+
 def sub_array(B,A):
     for i in range(0,len(B)):
         temp_index=i
@@ -90,8 +94,8 @@ def sub_array(B,A):
             print("I found the sub array:", i)
             return i
     return -1
-x=sub_array(B,A)
-print(x)
+# x=sub_array(B,A)
+# print(x)
 
 # Print pairs function
 listA=[3,5,7,8,1]
@@ -106,7 +110,7 @@ def print_pairs_sum(listA):
             print(x)
 # print_pairs_sum(listA)
 
-#
+# Print difference of sum of even indices and odd indices
 listB=[1,2,3,4,5,6,7,8]
 def difference_even_odd(listB):
     Even_number=0
@@ -157,8 +161,8 @@ def compute_fequencyA2(listC):
     frequency_array=[]
     for i in range(0,1000005):
         frequency_array.append(0)
-    for i in listC:
-        frequency_array[i]=frequency_array[i]+1
+    for j in listC:
+        frequency_array[j]=frequency_array[j]+1
 
     return frequency_array
 

@@ -24,14 +24,14 @@ l4=[5,5,3,6,3,4,-1]
 def sumofcountoflistelements(l3,l4,k):
     countofelements=0
     for i in l3:
-        print("current i is : ",i)
+        # print("current i is : ",i)
         for j in l4:
-            print("current j is : ",j)
+            # print("current j is : ",j)
             if k==i+j:
-                print("Sum of i and j is = ", k)
+                # print("Sum of i and j is = ", k)
                 countofelements=countofelements+1
-                print("current count is : ",countofelements)
-    print("Final count is : ",countofelements)
+                # print("current count is : ",countofelements)
+    # print("Final count is : ",countofelements)
     return countofelements
 
 # print(sumofcountoflistelements(l3,l4,k))
@@ -51,11 +51,11 @@ def check_pallindrome(S):
 # print(check_pallindrome("abddba"))
 # print(check_pallindrome("aba"))
 
-# def swapping(num1,num2):
-#     tempnum=num1
-#     num1=num2
-#     num2=tempnum
-#     return num1,num2
+def swapping(num1,num2):
+    tempnum=num1
+    num1=num2
+    num2=tempnum
+    return num1,num2
 
 # x=5
 # y=6
