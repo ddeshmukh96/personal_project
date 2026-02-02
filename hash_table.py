@@ -25,7 +25,7 @@ def search(hash_table,var):
     for num in hash_table[var_lst_index]:
         if num==var:
             print("Yes")
-            return
+            return  # here return is used to stop
     print("No")
 
 
@@ -44,7 +44,7 @@ def delete(hash_table,var):
         if num==var:
             hash_table[var_lst_index].remove(var)
 
-# val_del=int(input("Enter num: "))
-# delete(hash_table,val_del)
+val_del=int(input("Enter num: "))
+delete(hash_table,val_del)
 
 print(hash_table)
