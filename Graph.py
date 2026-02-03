@@ -1,14 +1,15 @@
-"""
+r"""
                      0 - 5
                     / \  /
                    1    3
                   /    / \
                  2    4   6
 
-
 """
+
 """Adjacency Matrix"""
-g1=[
+
+matrix=[
    [0,1,0,1,0,1,0],
    [1,0,1,0,0,0,0],
    [0,1,0,0,0,0,0],
@@ -18,13 +19,21 @@ g1=[
    [0,0,0,1,0,0,0]
 ]
 
-# for i in range(0,11):
-#     u=int(input("Enter the Node 1 : "))
-#     v=int(input("Enter the Node 2 : "))
-#     if g1[u][v]==1:
-#         print("Edge is Present")
-#     else:
-#         print("No Edge is present")
+def find_edge(matrix):
+    n=len(matrix)
+    for _ in range(10):
+        u=int(input("Enter the Node 1 : "))
+        v=int(input("Enter the Node 2 : "))
+        if 0<=u<n and 0<=v<n:
+            if matrix[u][v]==1:
+                print("Edge is Present")
+            else:
+                print("No Edge is present")
+        else:
+            print("Missing entered node number")
+
+# find_edge(matrix)
+
 
 """Adjacency List"""
 g2=[
@@ -37,17 +46,23 @@ g2=[
     [3]
 ]
 
-# for i in range(0,5):
-#     u=int(input("Enter the Node 1 : "))
-#     v=int(input("Enter the Node 2 : "))
-#     found=False
-#     for j in g2[u]:
-#         if j==v:
-#             found=True
-#             print("Edge found")
-#     if found==False:
-#         print("Edge not found")
+def finding_edge(g2):
+    for _ in range(0,5):
+        n=len(g2)
+        u=int(input("Enter the Node 1 : "))
+        v=int(input("Enter the Node 2 : "))
+        found=False
+        if 0<=u<n and 0<=v<n:
+            for j in g2[u]:
+                if j==v:
+                    found=True
+                    print("Edge found")
+            if found==False:
+                print("Edge not found")
+        else:
+            print("Invalid Nodes Entered")
 
+# finding_edge(g2)
 
 """
 Mistake 1
@@ -90,7 +105,7 @@ the node condition true it shoud prunt "Edge found" and finish.
 """
 
 
-"""
+r"""
 n=8
 m=9
 0 1
@@ -108,9 +123,7 @@ m=9
                     2 - 1  3
                      \  |  /
                         0
-                                  
-
-                   
+                                                     
 """
 
 n=int(input("Give me number of nodes : "))
@@ -129,7 +142,7 @@ for j in range(0,m):
     g3[n1].append(n2)
     g3[n2].append(n1)
 
-print(g3)
+# print(g3)
 
 # To find the indirect edge take two inputs
 n3=int(input())
@@ -137,7 +150,7 @@ n4=int(input())
 visited_list=[]
 for k in range(0,n):
     visited_list.append(0)
-print(visited_list)
+# print(visited_list)
 def walk_graph(current_node,target_node,visited_list):
     visited_list[current_node]=1
     print(visited_list)
@@ -152,6 +165,6 @@ def walk_graph(current_node,target_node,visited_list):
                 return True
     return False
         
-print(walk_graph(n3,n4,visited_list))
+# print(walk_graph(n3,n4,visited_list))
 
 # To do - DFS using stack
