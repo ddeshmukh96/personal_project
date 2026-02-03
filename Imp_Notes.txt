@@ -354,7 +354,7 @@ f(0)=x           "x is any value which will be know"
 
 
 general equation Form (for example)
-f(n)=k1(f(n-a1)) + k1(f(n-a2)) + k2(f(n-a3)) + ................ + km(f(n-am))
+f(n)=k(f(n-a1)) + k1(f(n-a2)) + k2(f(n-a3)) + ................ + km(f(n-am))
 
 Line equation
 y=mx+c
