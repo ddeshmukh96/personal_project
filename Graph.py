@@ -47,16 +47,17 @@ g2=[
 ]
 
 def finding_edge(g2):
+    n=len(g2)
     for _ in range(0,5):
-        n=len(g2)
         u=int(input("Enter the Node 1 : "))
         v=int(input("Enter the Node 2 : "))
-        found=False
         if 0<=u<n and 0<=v<n:
+            found=False
             for j in g2[u]:
                 if j==v:
                     found=True
                     print("Edge found")
+                    break
             if found==False:
                 print("Edge not found")
         else:
@@ -65,7 +66,7 @@ def finding_edge(g2):
 # finding_edge(g2)
 
 """
-Mistake 1
+My 1st Mistake when I wrote the code
 
 for i in range(0,5):
     u=int(input("Enter the Node 1 : "))
@@ -74,10 +75,10 @@ for i in range(0,5):
     for j in g2[u]:
         if j==v:
             found=True
-        print("Edge found")
+    print("Edge found")
 
 In this code due to the "print("Edge found")" written in indent
-of for for the every iteration it is provide the print
+of for, for the every iteration it is provide the print
 statement without caring the edge is found or not
 
 """
@@ -97,17 +98,17 @@ for i in range(0,5):
         else:
             print("Edge not found)
 
-In this code it is iterating via loop on line 77 and printing
-the answer for each node and the if found it prints the output
+In this code it is iterating via loop on line 94 and printing
+the answer for each node and then if found it prints the output
 as "Edge Found" but the desired output was like as soon as I get
-the node condition true it shoud prunt "Edge found" and finish.
+the node condition true it shoud print "Edge found" and finish.
 
 """
 
 
 r"""
-n=8
-m=9
+n=8 (nuber of nodes)
+m=9 (number of edges)
 0 1
 0 3
 0 2
@@ -118,9 +119,9 @@ m=9
 4 5
 6 7                     
 
-                        5 - 4    6 - 7
+                        5 — 4    6 — 7
                       / |   /
-                    2 - 1  3
+                    2 — 1  3
                      \  |  /
                         0
                                                      
@@ -133,10 +134,10 @@ g3=[]
 
 # g3=[[1,2,3],[],[],[],[],[],[],[]]
 
-for i in range(0,n):
+for _ in range(0,n):
     g3.append([])
 
-for j in range(0,m):
+for _ in range(0,m):
     n1=int(input())
     n2=int(input())
     g3[n1].append(n2)
@@ -148,7 +149,7 @@ for j in range(0,m):
 n3=int(input())
 n4=int(input())
 visited_list=[]
-for k in range(0,n):
+for _ in range(0,n):
     visited_list.append(0)
 # print(visited_list)
 def walk_graph(current_node,target_node,visited_list):
