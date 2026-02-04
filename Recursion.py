@@ -21,6 +21,33 @@ def countdown(k):
 
 calls=0
 
+"""   Fibonacci problem using recursion  """
+
+def fibonacci(n):
+    global calls
+    calls+=1
+    if n==0:
+        return 0
+    if n==1:
+        return 1
+    fn=fibonacci(n-1)+fibonacci(n-2)
+    return fn
+
+# n=int(input("Enter n: "))
+
+# print(fibonacci(n))
+# print(calls)
+
+
+""" Fibonacci series problem using memoization
+
+Memoization is a technique used in algorithms (especially
+recursion and dynamic programming) where the results of
+expensive function calls are stored so that the same
+inputs are not recomputed again.
+
+"""
+
 def fibonacci(n,cache_list):
     global calls
     calls+=1
