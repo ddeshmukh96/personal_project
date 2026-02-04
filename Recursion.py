@@ -21,7 +21,7 @@ def countdown(k):
 
 calls=0
 
-"""   Fibonacci problem using recursion  """
+"""   Fibonacci problem using *naïve recursion*  """
 
 def fibonacci(n):
     global calls
@@ -45,6 +45,8 @@ Memoization is a technique used in algorithms (especially
 recursion and dynamic programming) where the results of
 expensive function calls are stored so that the same
 inputs are not recomputed again.
+
+This is done to change exponential behaviour to linear one
 
 """
 

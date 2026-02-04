@@ -1,14 +1,17 @@
-a=[ [1,2,3],
-    [4,5,6],
-    [7,8,9]]
-#    0 1 2 3
-b=[ [9,8,7,3],
-    [6,5,4,5],
-    [3,2,1,7]]
+#    0 1 2
+a=[ [1,2,3],   # 0
+    [4,5,6],   # 1
+    [7,8,9]]   # 2
 
-c=[ [0,0,0,0],
-    [0,0,0,0],
-    [0,0,0,0]]
+#    0 1 2 3
+b=[ [9,8,7,3], # 0
+    [6,5,4,5], # 1
+    [3,2,1,7]] # 2
+
+#    0 1 2 3
+c=[ [0,0,0,0], # 0
+    [0,0,0,0], # 1
+    [0,0,0,0]] # 2
 
 """
       0 1 2
@@ -46,4 +49,4 @@ def birthdayCakeCandles(candles):
             candles_count=candles_count+1
     return candles_count
 
-print(birthdayCakeCandles(candles))
+# print(birthdayCakeCandles(candles))
