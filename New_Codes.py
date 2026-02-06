@@ -3,6 +3,8 @@ L1=[1,5,8,9,5,7]
 L2=[2,7,6,3,6,8]
 
 #L3=[3,12,14,12]
+
+# Order n^2 solution
 def adding_list(L1,L2):
     count_self=0
     L3=[]
@@ -17,8 +19,9 @@ def adding_list(L1,L2):
                 print("XXX i and j are not same: ",i,j)
     print(count_self)
     return L3
-
 # print(adding_list(L1,L2))
+
+# Order n solution
 
 def adding_list(L1,L2):
     count_self=0
@@ -31,6 +34,25 @@ def adding_list(L1,L2):
     return L3
 
 # print(adding_list(L1,L2))
+
+""" if lists are not of same length """
+
+lst1=[1,2,3,4,5,8]
+lst2=[4,5,5,9,8]
+def adding_lst(l1,l2):
+    l3=[]
+    if len(l1)!=len(l2):
+        if len(l1)>len(l2):
+            l2.append(0)
+        else:
+            l1.append(0)
+    for i in range(0,len(l1)):
+        element_sum=l1[i]+l2[i]
+        l3.append(element_sum)
+    return l3
+
+# print(adding_lst(lst1,lst2))
+
 
 #MATRIX
 A=[ [1,2,3],
@@ -65,7 +87,7 @@ def sum_of_matrix(A,B):
         for j in range(0,3):
             C[i][j] = A[i][j] + B[i][j]
     return C
-x=sum_of_matrix(A,B)
+# x=sum_of_matrix(A,B)
 # for i in range(0,3):
 #     for j in range(0,3):
 #     #     print(C[i][j],end=" ")
@@ -121,7 +143,7 @@ def pallindrome_sum(G):
         Final_sum=sum(resulting_List1)
         return Final_sum
 
-# print(pallindrome_sum(G))
+print(pallindrome_sum(G))
 
 
 matrix_1=[[1,0,0,1],
