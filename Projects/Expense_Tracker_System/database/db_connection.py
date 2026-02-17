@@ -1,9 +1,9 @@
 import mysql.connector
 
-def get_connection(password):
+def get_connection():
     return mysql.connector.connect(
         host="localhost",
         user="root",
-        password=password,
+        password="YOUR_PASSWORD",
         database="expense_tracker"
     )
