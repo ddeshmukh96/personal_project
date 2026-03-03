@@ -142,5 +142,3 @@ def check_well_string_form(s5):
     return True
 
 print(check_well_string_form(s5))
-
-
