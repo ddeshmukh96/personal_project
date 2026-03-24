@@ -556,7 +556,7 @@ class Science:
     # def cal_percentage(self):
     #     self.percentage=str((self.phy+self.chem+self.math)/3) + "%"
 
-    @property  # to inherit all variables from one fnctn to this functn
+    @property  # to inherit all variables from one functn to this functn
     def percentage(self):
         return (str((self.phy+self.chem+self.math)/3) + "%")
 
@@ -756,7 +756,6 @@ engg1=Engineer("Sean", 27)
 # print(engg1.name)
 
 """ 
-
 Create a class called Order which stores items
 and its cost
 Use Dunder function __gt__() to convey that:
