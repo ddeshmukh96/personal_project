@@ -1,0 +1,10 @@
+This is a high-level, versatile programming language known for its
+simplicity and readability, making it an excellent choice for both beginners
+and experienced developers. Created by Guido van Rossum, Python emphasizes
+clean syntax that allows programmers to write code that is easy to understand
+and maintain. It supports multiple programming paradigms, including
+procedural, object-oriented, and functional programming. Python is widely
+used in various fields such as web development, data analysis,
+artificial intelligence, automation, and scientific computing. Its large
+standard library and active community contribute to a vast ecosystem of
+frameworks and tools, making development faster and more efficient.
