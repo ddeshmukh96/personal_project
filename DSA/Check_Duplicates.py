@@ -64,39 +64,6 @@ def largest_product(Lst):
 # print(largest_product(My_Lst))
 
 
-# Sliding window Algorithm
-"""
-Write a code to find whether A is subarray of
-B and o/p is the first index
-A=[3,5,2,1]
-B=[7,2,3,3,3,5,2,1,6]
-
-lst1=B
-lst2=A
-"""
-A=[3,5,2,1]
-B=[7,2,3,3,3,5,2,1,6]
-
-def sub_array(B,A):
-    for i in range(0,len(B)):
-        temp_index=i
-        is_equal=True
-        print("Temporary index is: ",temp_index,"value of i is",i)
-        for j in range(0,len(A)):
-            print("Current j is :",j)
-            if B[temp_index]!=A[j]:
-                print("Found mistmatched : ", i, j)
-                is_equal=False
-                break
-            temp_index=temp_index+1
-            print("New value of temporary index is: ", temp_index)
-        if is_equal==True:
-            print("I found the sub array:", i)
-            return i
-    return -1
-# x=sub_array(B,A)
-# print(x)
-
 # Print pairs function
 listA=[3,5,7,8,1]
 """

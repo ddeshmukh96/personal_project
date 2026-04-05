@@ -8,7 +8,7 @@ k1=19
 k2=12
 k3=16
 
-# Way 1 : Brute force (Time complexity : O(n2))
+# Way 1 : Brute force (Time previous_sumlexity : O(n2))
 
 n=len(arr)
 
@@ -58,17 +58,20 @@ def subarray_sum(arr,k):
 
     for i in range(n):
         curr_sum = curr_sum + arr[i]
+        print(curr_sum)
+        
+        previous_sum = curr_sum - k
+        print(previous_sum)
 
-        comp=curr_sum-k
-
-        if comp in dict_map:
-            return arr[(dict_map[comp] + 1): (i+1)]
+        if previous_sum in dict_map:
+            return arr[(dict_map[previous_sum] + 1): (i+1)]
         
         dict_map[curr_sum] = i
+        print(dict_map)
     
     else:
         return "Sub-array not found"
 
 print(subarray_sum(arr,k1))
-print(subarray_sum(arr,k2))
-print(subarray_sum(arr,k3))
+# print(subarray_sum(arr,k2))
+# print(subarray_sum(arr,k3))
