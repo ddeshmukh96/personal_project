@@ -10,9 +10,8 @@ k3=16
 
 # Way 1 : Brute force (Time previous_sumlexity : O(n2))
 
-n=len(arr)
-
 def sub_arr_sum(arr,k):
+    n=len(arr)
     
     for i in range(n):
         curr_sum=0
@@ -29,6 +28,7 @@ def sub_arr_sum(arr,k):
 # Way 2 : Sliding Window Algorithm (all elements must be positive)
 
 def sub_array_sum(arr,k):
+    n=len(arr)
 
     curr_sum=0
     start=0
@@ -52,6 +52,7 @@ def sub_array_sum(arr,k):
 # Way 3 : Hashing Algorithm (could be used for + / - elements)
 
 def subarray_sum(arr,k):
+    n=len(arr)
     
     dict_map={0:-1}
     curr_sum=0

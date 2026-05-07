@@ -5,17 +5,19 @@ def largest_k(lstA,k):
     temp=lstA.copy()
     for i in range(k):
         largest=temp[0]
-        print(f"for {i} the current largest number is {largest}")
+        print(f"for k={i} the current largest number is {largest}")
         for num in temp:
             if num>largest:
+                print(f"As {num} is greater than {largest}")
                 largest=num
-                print(f"As num={num} is greater than largest, largest={largest}")
+                print(f"The new largest number is {largest}")
         if i==k-1:
             print(f"The {k}th largest number is {largest}")
             break
         temp.remove(largest)
+        print(temp)
 
-# largest_k(lstA,k)
+largest_k(lstA,k)
 
 import heapq
 
@@ -23,14 +25,17 @@ def k_largest(lstA,k):
 
     # Creating heap list which contains k-1 elements from lstA
     heap_lst=lstA[:k]
+    print(heap_lst)
 
     # Using heapq library to arrange the heap_lst so that heap_lst[0] is the smallest element
     heapq.heapify(heap_lst)
+    print(heap_lst)
 
     # Iterating over the remaining list elements and perform operations
     for num in lstA[k:]:
         if num>heap_lst[0]:
             heapq.heappushpop(heap_lst,num)
+            print(heap_lst)
     
     return f"The {k} largest number is {heap_lst[0]}"
 

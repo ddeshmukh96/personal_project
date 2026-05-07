@@ -1,8 +1,11 @@
 """
 Write a program to get the max len of sub-string in a given string
+
 """
 
 s='abcabcbb'
+
+# Way 1: Brute force Aprroach. O(n2)
 
 def max_substr(s):
     n=len(s)
@@ -19,6 +22,8 @@ def max_substr(s):
 # print(max_substr(s))
 # print(max_substr('abdebabbcercchd'))
 
+# Way 2: Sliding Window Algorithm  O(n)
+
 def max_of_substr(s):
     my_set=set()
     win_start=0
@@ -28,12 +33,13 @@ def max_of_substr(s):
             my_set.remove(s[win_start])
             win_start+=1
         my_set.add(s[win_end])
-        max_len=max(max_len,(win_end-win_start+1))
+        max_len=max(max_len,len(my_set))
     return max_len
 
 print(max_of_substr('pwkewke'))
 print(max_of_substr('abebabbcercchd'))
 
+# Way 1 (using len function): Brute force Aprroach O(n2)
 
 def longest_substr(s):
     n=len(s)
