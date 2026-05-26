@@ -33,11 +33,11 @@ def max_of_substr(s):
             my_set.remove(s[win_start])
             win_start+=1
         my_set.add(s[win_end])
-        max_len=max(max_len,len(my_set))
+        max_len=max(max_len,len(my_set))   # we-ws+1
     return max_len
 
-print(max_of_substr('pwkewke'))
-print(max_of_substr('abebabbcercchd'))
+# print(max_of_substr('pwkewke'))
+# print(max_of_substr('abebabbcercchd'))
 
 # Way 1 (using len function): Brute force Aprroach O(n2)
 
@@ -53,10 +53,10 @@ def longest_substr(s):
         max_len=max(max_len,len(my_set))
     return max_len
 
-print(longest_substr(s))
-print(longest_substr('pwekekw'))
-print(longest_substr('abcaefg'))
-print(longest_substr('tmmzuxt'))
-print(longest_substr('dvdf'))
-print(longest_substr('aaaaaaaaaaaaa'))
-print(longest_substr('aaabaaaaegaaa'))
+# print(longest_substr(s))
+# print(longest_substr('pwekekw'))
+# print(longest_substr('abcaefg'))
+# print(longest_substr('tmmzuxt'))
+# print(longest_substr('dvdf'))
+# print(longest_substr('aaaaaaaaaaaaa'))
+# print(longest_substr('aaabaaaaegaaa'))

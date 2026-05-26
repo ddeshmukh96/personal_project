@@ -23,7 +23,7 @@ def arr_prod(arr):
 # print(arr_prod(arr))
 # print(arr_prod(arr_dup))
 
-# Way 2 : Divison O(n). Use when array don't have 0 or 0's 
+# Way 2 : Divison O(n). All cases can be handled
 
 def array_prod(arr):
     n=len(arr)
