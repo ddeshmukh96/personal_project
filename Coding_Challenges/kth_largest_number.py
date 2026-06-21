@@ -1,27 +1,26 @@
 lstA=[8,6,17,4,13,9,5,77,19,55]
 k=int(input("Enter which largest number you want to find: "))
 
-def largest_k(lstA,k):
+def largest_k_num(lstA,k):
     temp=lstA.copy()
     for i in range(k):
         largest=temp[0]
-        print(f"for k={i} the current largest number is {largest}")
+        # print(f"for k={i} the current largest number is {largest}")
         for num in temp:
             if num>largest:
-                print(f"As {num} is greater than {largest}")
+                # print(f"As {num} is greater than {largest}")
                 largest=num
-                print(f"The new largest number is {largest}")
+                # print(f"The new largest number is {largest}")
         if i==k-1:
-            print(f"The {k}th largest number is {largest}")
-            break
+            # print(f"The {k}th largest number is {largest}")
+            return largest
         temp.remove(largest)
-        print(temp)
 
-largest_k(lstA,k)
+largest_k_num(lstA,k)
 
 import heapq
 
-def k_largest(lstA,k):
+def k_largest_num(lstA,k):
 
     # Creating heap list which contains k-1 elements from lstA
     heap_lst=lstA[:k]
@@ -39,5 +38,5 @@ def k_largest(lstA,k):
     
     return f"The {k} largest number is {heap_lst[0]}"
 
-# print(k_largest(lstA,k))
-# print(k_largest([8,4,7,6,3],k))
+# print(k_largest_num(lstA,k))
+# print(k_largest_num([8,4,7,6,3],k))

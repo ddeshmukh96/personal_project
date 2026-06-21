@@ -26,16 +26,14 @@ def arr_prod(arr):
 # Way 2 : Divison O(n). All cases can be handled
 
 def array_prod(arr):
-    n=len(arr)
     res=[]
-
     prod=1
     zero_count=0
-    for i in range(n):
-        if arr[i]!=0:
-            prod=prod*arr[i]
-        else:
+    for num in arr:
+        if num==0:
             zero_count+=1
+            continue
+        prod=prod*num
     
     if zero_count>1:
         return [0]*n
@@ -48,12 +46,13 @@ def array_prod(arr):
                 res.append(0)
         return res
     
-    for j in range(n):
-        res.append(prod//arr[j])
+    for num in arr:
+        res.append(prod//num)
     
     return res
 
-# print(array_prod(arr))
+print(array_prod(arr))
+print(array_prod([4,5,9,7,2,7,3,4,1]))
 
 # Way 3: Prefix and suffix O(n). Could be used for all cases
 

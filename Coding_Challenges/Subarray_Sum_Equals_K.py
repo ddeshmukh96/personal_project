@@ -1,6 +1,6 @@
 """
 Write a program to find the contiguous subarray from a given array such that summing the
-elements in subarray should be equal to a value k 
+elements in subarray sums-up to k
 """
 
 arr=[2, 5, 9, 7, 3, 4]
