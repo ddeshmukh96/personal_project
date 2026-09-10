@@ -38,18 +38,41 @@ def sumofcountoflistelements(l3,l4,k):
 
 S1="paxxap"
 S2="paxyap"
-def check_pallindrome(S):
-    isPal = True
-    for i in range(0,len(S)):
+
+def check_palindrome(S):
+    for i in range(0,len(S)//2):
         j=len(S)-i-1
         if S[i]!=S[j]:
-            isPal = False
-    return isPal
+            return False
+    return True
 
-# print(check_pallindrome(S1))
-# print(check_pallindrome(S2))
-# print(check_pallindrome("abddba"))
-# print(check_pallindrome("aba"))
+# print(check_palindrome(S1))
+# print(check_palindrome(S2))
+# print(check_palindrome("abddba"))
+# print(check_palindrome("aba"))
+
+
+def isPalindrome(string):
+    if string==string[::-1]:
+        return True
+    return False
+
+# print(isPalindrome(S1))
+# print(isPalindrome(S2))
+
+def checking_Palindrome(s):
+    left=0
+    right=len(s)-1
+    while left<right:
+        if s[left]!=s[right]:
+            return False
+        left+=1
+        right-=1
+    return True
+
+print(checking_Palindrome(S1))
+print(checking_Palindrome(S2))
+
 
 def swapping(num1,num2):
     tempnum=num1

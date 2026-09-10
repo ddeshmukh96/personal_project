@@ -5,13 +5,19 @@ pwd (present working directory)
 
 mkdir - to create a new folder
 
-For main folder: cd ~/workspace/My_project
-Creating new folder : mkdir DSA (DSA is folder name)
+1 For main folder: cd ~/workspace/My_project
+5 Creating new folder : mkdir DSA (DSA is folder name)
 
-✅ Final working workflow
+✅ Final working   workflow
 For Expense Tracker:
 cd ~/workspace/My_project/Projects/Expense_Tracker_System
 source venv/bin/activate
 
 For DSA practice:
 cd ~/workspace/My_project/DSA
+
+Final step: push code to GitHub
+final notes: review tomorrow
+FINAL checklist: dependencies installed
+
+mkdir - to create a new folder/directory

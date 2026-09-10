@@ -36,7 +36,7 @@ def array_prod(arr):
         prod=prod*num
     
     if zero_count>1:
-        return [0]*n
+        return [0]*len(arr)
     
     if zero_count==1:
         for num in arr:
