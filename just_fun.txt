@@ -1,0 +1,3 @@
+Hello World
+Using cat command with ">" to creat a file name just_fun.txt and overwriting something.Hello World. Learning good.
+

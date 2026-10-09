@@ -1,6 +1,6 @@
 git branch
 git add .
-git commit -m "count number of repeating elements"
+git commit -m "any respective work line"
 git push
 
 source venv/bin/activate

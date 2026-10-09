@@ -1,0 +1,12 @@
+Alice, January, 55000
+Anderson, February, 55000
+Sunny, February, 75000
+Sunny, February, 75000
+David, March, 60000
+David, March, 60000
+Eve, April, 65000
+
+"this is a sorted text file"
+
+Hello Hello Hello
+Hello World

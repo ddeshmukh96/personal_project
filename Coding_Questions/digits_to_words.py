@@ -5,7 +5,9 @@ Example: n=568 becomes Five Six Eight
 
 """
 
-n=int(input("Enter the number: "))
+# n=int(input("Enter the number: "))
+
+n=589
 
 """  Normal Approach  """
 def num_to_word(n):

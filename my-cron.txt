@@ -1,0 +1,5 @@
+# Have lunch at 1:30 PM each Saturday
+30 13 * * * echo "Go for lunch"
+
+# Drink water and rest ur eyes
+0 * * * * cat ~/workspace/My_project/hourly_reminder.txt
