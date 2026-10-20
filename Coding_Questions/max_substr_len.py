@@ -53,10 +53,10 @@ def longest_substr(s):
         max_len=max(max_len,len(my_set))
     return max_len
 
-# print(longest_substr(s))
-# print(longest_substr('pwekekw'))
-# print(longest_substr('abcaefg'))
-# print(longest_substr('tmmzuxt'))
-# print(longest_substr('dvdf'))
-# print(longest_substr('aaaaaaaaaaaaa'))
-# print(longest_substr('aaabaaaaegaaa'))
+print(longest_substr(s))
+print(longest_substr('pwekekw'))
+print(longest_substr('abcaefg'))
+print(longest_substr('tmmzuxt'))
+print(longest_substr('dvdf'))
+print(longest_substr('aaaaaaaaaaaaa'))
+print(longest_substr('aaabaaaaegaaa'))
